@@ -3,7 +3,8 @@ using namespace std;
 
 int main()
 {
-    int_fast64_t n,m,a;
+    int n,m,dem=0;
     cin>>n>>m;
-    cout<<abs(__gcd(n,m));
+    for(n;n<m;n=n+(n/10)) dem++;
+    cout<<dem;
 }
