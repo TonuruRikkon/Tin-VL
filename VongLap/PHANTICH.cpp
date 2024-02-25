@@ -9,5 +9,4 @@ int main()
     if(x<(int) x) y=(n/x)+1;
     else y=n/x;
     cout<<x<<" "<<y;
-    
 }
