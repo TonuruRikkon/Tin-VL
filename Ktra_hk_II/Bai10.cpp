@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int main()
+/**int main()
 {
     int n,x,lenght;
     string str,abc="", abc_2, ans="",t;
@@ -19,9 +19,9 @@ int main()
         ans += abc_2[x - n%26];
     }
     cout<<ans;
-}
+}**/
 
-/**int main()
+int main()
 {
     int n,x,lenght;
     string str,abc="", abc_2,ans="",t;
@@ -39,4 +39,4 @@ int main()
         ans += abc_2[x + n%26];
     }
     cout<<ans;
-}**/
+}
