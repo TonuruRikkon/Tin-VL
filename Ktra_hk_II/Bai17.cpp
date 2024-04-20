@@ -8,6 +8,7 @@ int main()
     memset(a,0,sizeof(a));
     memset(chu,0,sizeof(chu));
     getline(cin, str);
+    str += " ";
     for(int i=0; i<str.size(); i++){
         if(str[i]!=' '){
             temp+=str[i];

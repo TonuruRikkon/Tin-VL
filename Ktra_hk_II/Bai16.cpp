@@ -20,6 +20,7 @@ int find(string str)
 
 int main()
 {
+    int ten_pow;
     string str;
     getline(cin, str);
     for(int i=0; i<str.size(); i++){
@@ -27,5 +28,6 @@ int main()
             str[i]+='a'-'A';
         }
     }
-    cout<<lcm(find(str),100000);
+    ten_pow = pow(10,5);
+    cout<<lcm(find(str),ten_pow);
 }
