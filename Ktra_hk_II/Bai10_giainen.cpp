@@ -4,7 +4,7 @@ using namespace std;
 int main()
 {
     int n,x,lenght;
-    string str,abc="", abc_2,ans="",t;
+    string str,abc="", abc_2, ans="",t;
     getline(cin, str);
     cin>>n;
     lenght = str.size();
@@ -16,7 +16,7 @@ int main()
         t = "";
         t += str[i];
         x = abc_2.find(t);
-        ans += abc_2[x + n%26];
+        ans += abc_2[x - n%26];
     }
     cout<<ans;
 }

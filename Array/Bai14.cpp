@@ -9,7 +9,7 @@ int main()
     for(int i=0; i<n;i++){
         cin>>a[i];
     }
-    double x1=*max_element(a,a+n), x2, pos[1000];
+    double x1=*min_element(a,a+n), x2, pos[1000];
     for(int i=0;i<n;i++){
         if(a[i]!=x1){
             x2=a[i];
@@ -18,8 +18,8 @@ int main()
     }
     for (int i = 0; i < n; i++)
     {
-        if(a[i]<x1){
-            if(a[i]>x2){
+        if(a[i]>x1){
+            if(a[i]<x2){
                 x2=a[i];
             }
         }
@@ -30,9 +30,10 @@ int main()
             d++;
         }
     }
-    cout<<"Gia tri luon thu nhi:"<<x2<<endl;
+    cout<<"Gia tri nho thu nhi:"<<x2<<endl;
     cout<<"Cac vi tri:";
     for(int i=0;i<d;i++){
-        cout<<pos[i]<<",";
+        if(i!=d) cout<<pos[i]<<",";
+        if(i==d) cout<<pos[i];
     }
 }
