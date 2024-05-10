@@ -31,7 +31,7 @@ int main()
     for(int i=0;i<=y;i++){
         if(dem[i]==*max_element(dem,dem+y)){
             res++;
-            result+=s[i]+";";
+            result+=s[i]+"\n";
         }
     }
     cout<<res<<endl<<result;
