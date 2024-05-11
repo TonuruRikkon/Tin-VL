@@ -1,11 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-bool rev(double x, double y)
-{
-    return x>=y;
-}
-
 int main()
 {
     int n,m;
@@ -20,7 +15,7 @@ int main()
             if(i==1) b[j]=a[i][j];
         }
     }
-    int x=a[0][0],y;
+    int x=a[0][0],y=0;
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < m; j++)
@@ -43,7 +38,7 @@ int main()
         
     }
     
-    sort(b,b+m,rev);
+    sort(b,b+m,greater<int>());
     for(int i=0;i<m;i++){
         a[1][i]=b[i];
     }
@@ -55,6 +50,7 @@ int main()
         }
         cout<<endl;
     }
-    cout<<"Tong cac phan tu:"<<s<<endl<<"GTLN:"<<x<<endl<<"GTNN chia het cho 3:"<<y;
-    
+    cout<<"Tong cac phan tu:"<<s<<endl<<"GTLN:"<<x<<endl;
+    if(y!=0) cout<<"GTNN chia het cho 3:"<<y;
+    else if(y==0) cout<<"Khong co gia tri chia het cho 3.";
 }
