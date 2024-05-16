@@ -27,15 +27,27 @@ int main()
         }
         
     }
-    
-    for (int i = 0; i < n; i++)
+    int ii[n],jj[n],i=n-1,j=n-1,k=0;
+    while (i>0||j>0)
     {
-        for (int j = 0; j < n; j++)
-        {
-            cout<<"["<<b[i][j]<<"]";
-        }
-        cout<<endl;
+        ii[k]=i;
+        jj[k]=j;
+        if(b[i][j]==a[i][j]+b[i-1][j])i--;
+        else j--;
     }
+    i=n;
+    j=n;
+    int ii[100],jj[100],k=0;
+    while (i>0||j>0)
+    {
+        ii[k]=i;
+        jj[k]=j;
+        if(b[i][j]==a[i][j]+b[i-1][j]) i--;
+        else j--;
+        k--;
+    }
+    
+    
     
     
     
