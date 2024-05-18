@@ -3,20 +3,29 @@ using namespace std;
 
 int main()
 {
-    int n,a[n][n];
+    int n;
     cin>>n;
-    for(int i=1; i<=n;i++){
-        a[1][i]=i;
-        a[i][1]=i;
-    }
-    for (int i = 0; i < n; i++)
+    int a[100][100],k=0;
+    for (int i = 1; i <= n; i++)
     {
-        for (int j = 0; j < n; j++)
+        k=2;
+        for (int j = 1; j <= n; j++)
         {
-            if(a[i][1]*a[1][j]<=2*n) a[i][j]=a[i][1]*a[1][j];
-            else a[i][j]=
+            if(i*j<=2*n) a[i][j]=i*j;
+            else{
+                a[i][j]=k;
+                k+=2;
+            }
         }
         
+    }
+    for (int i = 1; i <= n; i++)
+    {
+        for (int j = 1; j <= n; j++)
+        {
+            cout<<a[i][j]<<" ";
+        }
+        cout<<endl;
     }
     
 }
