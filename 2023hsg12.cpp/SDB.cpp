@@ -12,10 +12,13 @@ int main()
     }
     for (int i = 0; i < n; i++)
     {
-        for (int j = a[i]; j>0; j++)        {
-            /* code */
+        for (int j = a[i]; j>0; j++){
+            if(int(sqrt(j))*int(sqrt(j))==j){
+                cout<<j<<" ";
+                break;
+            }
         }
-        
+
     }
-    
+
 }
