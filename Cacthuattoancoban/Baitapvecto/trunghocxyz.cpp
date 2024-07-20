@@ -3,35 +3,46 @@ using namespace std;
 
 int main()
 {
-    int n,dem[10][10],ans;
-    memset(dem,0,sizeof(dem));
+    int n,d1=0,d2=0,d3=0,doi;
     cin>>n;
-    vector<int> c;
+    vector<int> tin;
+    vector<int> toan;
+    vector<int> td;
     for (int i = 1; i <= n; i++)
     {
         int x;
         cin>>x;
-        c.push_back(x);
-    }
-    for (int i = 1; i <= n; i++)
-    {
-        int d=1;
-        while (dem[d][c[i]]!=0)
-        {
-            d++;
+        if(x==1) {
+            tin.push_back(i);
+            d1++;
         }
-        dem[d][c[i]] = i;
-        d=1;
-        cout<<d<<"!";
-    }
-    cout<<endl;
-    for (int i = 1; i <= 3; i++)
-    {
-        for (int j = 1; j <= 3; j++)
-        {
-            cout<<dem[i][j]<<" ";
+        else if(x==2) {
+            toan.push_back(i);
+            d2++;
         }
-        cout<<endl;
+        else if(x==3) {
+            td.push_back(i);
+            d3++;
+        }
+    }
+    doi=min(d1,min(d2,d3));
+    cout<<doi<<endl;
+    while (tin.size()>doi)
+    {
+        tin.erase(tin.begin()+0);
+    }
+        while (toan.size()>doi)
+    {
+        toan.erase(toan.begin()+0);
+    }
+        while (td.size()>doi)
+    {
+        td.erase(td.begin()+0);
+    }
+    
+    for (int i = 0; i < doi; i++)
+    {
+        cout<<tin[i]<<" "<<toan[i]<<" "<<td[i]<<endl;
     }
     
     
