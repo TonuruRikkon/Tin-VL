@@ -33,7 +33,8 @@ int main()
         }
         else pos.push_back(-1);
     }
-    for (int i = 0; i < n; i++)
+    cout<<"OK"<<endl;
+    for (int i = 1; i < n; i++)
     {
         if(pos[i]==-1) cout<<"OK"<<endl;
         else{
