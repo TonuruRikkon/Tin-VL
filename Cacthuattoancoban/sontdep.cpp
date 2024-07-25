@@ -3,7 +3,6 @@ using namespace std;
 
 int ans=0;
 bool a[int(1e6)+1];
-int long long d[int(1e6)+1];
 
 void sangnguyento()
 {
