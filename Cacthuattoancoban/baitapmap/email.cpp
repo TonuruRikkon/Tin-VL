@@ -13,7 +13,6 @@ int main()
         cin>>x;
         acc.push_back(x);
     }
-        sort(acc.begin(),acc.end());    
     for(int i=1;i<n;i++){
         auto it = lower_bound(acc.begin(),acc.end(),acc[i]);
         if(distance(acc.begin(),it)!=i){
