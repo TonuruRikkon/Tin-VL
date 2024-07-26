@@ -3,6 +3,10 @@ using namespace std;
 
 int main()
 {
-    string x="abcd";
-    cout<<x[x.size()-1];
+    vector<int> a;
+    for (int i = 0; i < 3; i++)
+    {
+        a.push_back(1);
+    }
+    cout<<a[4];
 }
