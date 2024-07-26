@@ -36,7 +36,8 @@ int main()
             }
         }
     }
-    for (int i = 0; i < n; i++)
+    cout<<"OK"<<endl;
+    for (int i = 1; i < n; i++)
     {
         if(pos[i]==0) cout<<"OK"<<endl;
         else{
