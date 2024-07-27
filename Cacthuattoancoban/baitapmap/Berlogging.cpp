@@ -3,19 +3,22 @@ using namespace std;
 
 int main()
 {
-    int n;
-    vector<int> score;
-    vector<int> tol_score;
-    vector<string> name_pos;
-    vector<string> name;
+    int n,check=0;
+    cin>>n;
+    string ans;
+    map<string,int> d;
     for (int i = 0; i < n; i++)
     {
         string x;
         int y;
         cin>>x>>y;
-        name.push_back(x);
-        name_pos.push_back(x);
-        score.push_back(y);
+        d[x]+=y;
     }
-    
+    for(auto i:d){
+        if(i.second>check){
+            check=i.second;
+            ans=i.first;
+        }
+    }
+    cout<<ans;
 }

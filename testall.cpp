@@ -3,10 +3,8 @@ using namespace std;
 
 int main()
 {
-    vector<int> a;
-    for (int i = 0; i < 3; i++)
-    {
-        a.push_back(1);
-    }
-    cout<<a[4];
+    map<char,int> d;
+    d.insert(make_pair('a',1));
+    d.insert(make_pair('b',4));
+    cout<<sizeof(d);
 }
