@@ -1,12 +1,17 @@
 Mô tả
 Ba bác nông dân thức dậy vào lúc 5 giờ sáng và chuẩn bị công việc của mình: mỗi bác phải vắt sữa một con bò của mình. Bác nông dân đầu tiên bắt đầu vắt sữa con bò của mình tại thời điểm 300 (tính bằng giây sau 5 giờ) và kết thúc tại thời điểm 1000. Bác nông dân thứ hai bắt đầu tại thời điểm 700 và kết thúc tại thời điểm 1200. Bác nông dân thứ ba bắt đầu tại thời điểm 1500 và kết thúc tại thời điểm 2100. Thời gian liên tục dài nhất mà tại thời điểm bất kỳ nào trong thời gian đó luôn có ít nhất một bác nông dân vắt sữa là 900 giây (từ thời điểm 300 đến 1200). Thời gian liên tục dài nhất mà bất kỳ thời điểm nào trong thời gian này đều không có sự vắt sữa của bác nông dân nào là 300 giây (từ thời điểm 1200 đến 1500; chú ý rằng ta chỉ tính giữa các thời điểm bắt đầu và kết thúc của tất cả các sự vắt sữa, không tính khoảng thời gian từ 5 giờ đến thời điểm vắt sữa sớm nhất và khoảng thời gian sau thời điểm vắt sữa muộn nhất).
 
-Nhiệm vụ của bạn là viết một chương trình đọc danh sách các thời điểm bắt đầu và kết thúc của N (1 ≤ N ≤ 5.000) bác nông dân vắt sữa N con bò và tính (theo giây):
+Nhiệm vụ của bạn là viết một chương trình đọc danh sách các thời điểm 
+bắt đầu và kết thúc của N (1 ≤ N ≤ 5.000) bác nông dân vắt sữa N con bò 
+và tính (theo giây):
 
 Khoảng thời gian dài nhất mà có ít nhất một con bò được vắt sữa.
 Khoảng thời gian dài nhất mà không có con bò nào được vắt sữa.
 Dữ liệu vào
-Dòng đầu tiên chứa số nguyên N. Tiếp theo có N dòng, mỗi dòng ghi hai số nguyên không âm nhỏ hơn 1.000.000 là thời điểm bắt đầu và kết thúc (tính theo giây sau 5 giờ) của một bác nông dân. Hai số trên cùng một dòng ghi cách nhau một dấu cách.
+Dòng đầu tiên chứa số nguyên N. Tiếp theo có N dòng, mỗi dòng ghi 
+hai số nguyên không âm nhỏ hơn 1.000.000 là thời điểm bắt đầu 
+và kết thúc (tính theo giây sau 5 giờ) của một bác nông dân. 
+Hai số trên cùng một dòng ghi cách nhau một dấu cách.
 
 Dữ liệu ra
 Gồm một dòng chứa hai số nguyên ngăn cách nhau một dấu cách tương ứng là khoảng thời gian liên tục dài nhất mà có ít nhất một con bò được vắt sữa và khoảng thời gian dài nhất mà không có con bò nào được vắt sữa như mô tả ở trên.
