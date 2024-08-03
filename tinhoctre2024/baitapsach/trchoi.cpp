@@ -1,6 +1,12 @@
 #include <bits/stdc++.h>
 using namespace std;
-
+bool check(string s,int L,int R){
+    for (int i = L; i <= (L+R)/2; i++)
+    {
+        if(s[i]!=s[L+R-i]) return false;
+    }
+    return true;
+}
 int main()
 {
     string s;
@@ -15,11 +21,10 @@ int main()
         test.push_back(make_pair(x-1,y-1));
     }
     for(auto i:test){
-        string a,b;
-        a=s.substr(i.first,i.second);
-        b=a;
-        reverse(a.begin(),a.end());
-        if(a==b)cout<<1<<endl;
+        cout<<i.first<<" "<<i.second<<"!"<<endl;
+    }
+    for(auto i:test){
+        if(check(s,i.first,i.second)==true) cout<<1<<endl;
         else cout<<-1<<endl;
     }
 }

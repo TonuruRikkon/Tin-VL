@@ -3,8 +3,23 @@ using namespace std;
 
 int main()
 {
-    map<char,int> d;
-    d.insert(make_pair('a',1));
-    d.insert(make_pair('b',4));
-    cout<<sizeof(d);
+    string s;
+    cin>>s;
+    int k;
+    cin>>k;
+    vector<pair<int,int>> test;
+    for (int i = 0; i < k; i++)
+    {
+        int x,y;
+        cin>>x>>y;
+        test.push_back(make_pair(x-1,y));
+    }
+    for(auto i:test){
+        cout<<i.first<<" "<<i.second<<"!"<<endl;
+    }
+    for(auto i:test){
+        string a="",b="";
+        a=s.substr(i.first,i.second);
+        cout<<a<<endl;
+    }
 }
