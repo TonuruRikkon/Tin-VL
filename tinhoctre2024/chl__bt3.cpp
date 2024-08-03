@@ -3,7 +3,7 @@ using namespace std;
 
 int main()
 {
-    int n,minn,maxx=0,rt=0,d=0,wt=0;
+    int n,minn,maxx=0,rt=0,d=0,wt=0,x;
     cin>>n;
     pair<int,int> bo[5000+1];
     vector<pair<int,int>> c;
@@ -16,7 +16,6 @@ int main()
     minn=bo[0].first;
     for (int i = 1; i < n; i++)
     {
-        int x;
         if(bo[i].first<=bo[i-1].second) x=bo[i].second;
         else{
             c.push_back(make_pair(minn,x));
@@ -26,6 +25,9 @@ int main()
             d++;
         }
     }
+    c.push_back(make_pair(minn,x));
+    m.push_back(make_pair(bo[n-1].first,bo[n-2].second));
+    d++;
     for (int i = 0; i < d; i++)
     {
         if(c[i].second-c[i].first>wt)wt=c[i].second-c[i].first;
