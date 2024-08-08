@@ -5,7 +5,7 @@ int main()
 {
     int n;
     cin>>n;
-    map<string,int> e;
+    map<string, int> e;
     for (int i = 0; i < n; i++)
     {
         string x;

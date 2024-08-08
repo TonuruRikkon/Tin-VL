@@ -3,8 +3,16 @@ using namespace std;
 
 int main()
 {
-    map<char,int> d;
-    d.insert(make_pair('a',1));
-    d.insert(make_pair('b',4));
-    cout<<sizeof(d);
+    int x,y;
+    string str;
+    cin>>x>>y;
+    cin.ignore();
+    getline(cin,str);
+    for (int i = 0; i < str.size(); i++)
+    {
+        cout<<int(str[i])-48<<endl;
+    }
+    
+
+    
 }
