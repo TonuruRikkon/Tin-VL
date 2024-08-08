@@ -19,9 +19,7 @@ int main()
         int x,y;
         cin>>x>>y;
         test.push_back(make_pair(x-1,y-1));
-    }
-    for(auto i:test){
-        if(check(s,i.first,i.second)==true) cout<<1<<endl;
+        if(check(s,x,y)==true) cout<<1<<endl;
         else cout<<-1<<endl;
     }
 }
