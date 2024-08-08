@@ -21,6 +21,7 @@ int main()
         }
         ans.insert(make_pair(start,end));
     }
+    cout<<ans.size()<<endl;
     for(auto i:ans){
         cout<<i.first<<" "<<i.second<<endl;
     }
