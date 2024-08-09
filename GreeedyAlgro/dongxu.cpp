@@ -3,7 +3,7 @@ using namespace std;
 
 int main()
 {
-    int n,ans=0;
+    int n,d=0;
     cin>>n;
     vector<int> a;
     for(int i=0; i<n;i++){
@@ -15,12 +15,17 @@ int main()
     cin>>sotien;
     sort(a.begin(),a.end());
     reverse(a.begin(),a.end());
-    for(auto i:a){
-        while(sotien%i==0){
-            sotien-=i;
-            ans++;
-            cout<<sotien<<" "<<i<<endl;
+    for(int i:a){
+        if(sotien-i<0) continue;
+        else{
+            while (sotien>=i)
+            {
+                sotien-=i;
+                d++;
+            }
+
         }
     }
-    cout<<ans;
+    
+    cout<<d;
 }
