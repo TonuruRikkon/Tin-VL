@@ -25,9 +25,12 @@ int main()
         }
         
     }
+    cout<<"-----------------------------------------------------\n|STT|             Ho ten               |  Nam sinh  |\n-----------------------------------------------------\n";
     for (int i = 0; i < n; i++)
     {
-        cout<<ds[i].hodem<<" "<<ds[i].ten<<endl;
+        cout<<"|  "<<i+1<<"|";
+        cout<<ds[i].hodem<<" "<<ds[i].ten;
+        cout<<"   |  "<<ds[i].nsinh<<"|\n";
     }
     
 }
