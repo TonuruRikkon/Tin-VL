@@ -3,31 +3,46 @@ using namespace std;
 
 struct datbanan
 {
-    int song,sotien,bansize;
+    int song,sotien,stt;
 }a[1000+1];
+
+bool sxsotien(datbanan a, datbanan b)
+{
+    return a.sotien>b.sotien;
+}
 
 int main()
 {
-    int n,k,d,tol;
+    freopen("inputfile/datbanan.inp", "r", stdin);
+    freopen("outputfile/datbanan.out", "w", stdout);
+    int n,k,d=0,tol=0;
+    vector<pair<int,int>> bansize;
     vector<pair<int,int>> ans;
     cin>>n;
     for (int i = 0; i < n; i++)
     {
         cin>>a[i].song>>a[i].sotien;
+        a[i].stt=i+1;
     }
     cin>>k;
     for (int i = 0; i < k; i++)
     {
-        cin>>a[i].bansize;
+        int x;
+        cin>>x;
+        bansize.push_back(make_pair(x,i+1));
     }
+    sort(a, a+n,sxsotien);
+    sort(bansize.begin(),bansize.end());
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < k; j++)
         {
-            if(a[j].bansize>=a[i].song){
-                ans.push_back(make_pair(i,j));
+            if(bansize[j].first>=a[i].song){
+                ans.push_back(make_pair(a[i].stt,bansize[j].second));
                 d++;
                 tol+=a[i].sotien;
+                break;
+                
             }
         }
         
