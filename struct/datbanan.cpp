@@ -41,6 +41,7 @@ int main()
                 ans.push_back(make_pair(a[i].stt,bansize[j].second));
                 d++;
                 tol+=a[i].sotien;
+                bansize[j].first=0;
                 break;
                 
             }
