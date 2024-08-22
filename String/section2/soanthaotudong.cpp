@@ -5,7 +5,7 @@ int main()
 {
     int n;
     cin>>n;
-    
+    cin.ignore(numeric_limits<streamsize>::max(),'\n');
     string str;
     vector<pair<string,string>> a;
     for (int i = 0; i < n; i++)
