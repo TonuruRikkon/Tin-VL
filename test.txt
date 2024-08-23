@@ -27,3 +27,8 @@ any
 ba b
 hind the g
 banana boat
+
+3
+one red solid oval
+two green solid ovals
+three purple solid ovals
