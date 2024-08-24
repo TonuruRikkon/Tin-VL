@@ -3,8 +3,10 @@ using namespace std;
 
 int main()
 {
-    int se=0,d=0,num=2;
-    string s=" ",x; cin>>x; s+=x;
+    int se=0,d=0,num=2,check=0;
+    string s=" ",x; 
+    cin>>x; 
+    s+=x;
     map<int,vector<pair<int,char>>> a;
     for (char i = 'a'; i <= 'z'; i++)
     {
@@ -54,24 +56,21 @@ int main()
         for(auto i:a){
             for(auto j:i.second){
                 if(s[x]==j.second){
-                    for(auto k:i.second){
-                        if(s[x-1]==k.second){
-                            if(s[x]==k.second){
-                                se+= 2+k.first;
-                                cout<<se<<"."<<endl;
-                                break;
-                            }
-                        }
-                        else{
-                            if(s[x]==k.second){
-                            se+= k.first;
-                            cout<<se<<"!"<<endl;
-                            break;                                
-                            }
-                        }
+                    if(check==i.first){
+                        se+=2+j.first;
+                        cout<<se<<"."<<endl;
+                        check=i.first;
+                        break;
+                    }
+                    else{
+                        se+=j.first;
+                        cout<<se<<"!"<<endl;
+                        check=i.first;
+                        break;
                     }
                 }
             }
         }
-    }cout<<se;
+    }
+    cout<<se;
 }
