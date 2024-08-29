@@ -21,13 +21,13 @@ int main()
     {
         if(chek[i]>0&&chekB[i]>0); else check++;
         x[i]=min(chek[i],chekB[i]);
-        if(check==9&&i==0&&chek[i]>0)cout<<0;
-        else
+        else{
             while(x[i]>0)
             {
                 cout<<i;
                 x[i]--;
             }
+        }
     }
     if(check==10) cout<<-1;
 }
