@@ -9,17 +9,14 @@ int main()
     {
         cin>>a[i];
     }
-    int prev=a[0];
-    for (int i = 0; i < n; i++)
+    for (int i = 1; i < n; i++)
     {
-        if(a[i]>prev){
-            tol+=a[i]-prev;
-            prev=a[i];
+        if(a[i]>a[i-1]){
+            tol+=a[i]-a[i-1];
         }
         else{
             if(ans<tol) ans=tol;
             tol=0;
-            prev=a[i];
         }
     }
     if(ans<tol) ans=tol;
