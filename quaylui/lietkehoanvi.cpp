@@ -1,36 +1,35 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
 
 
-void quaylui(vector<int>&a,vector<bool>used,int n){
+
+void lietke(int n, vector<int>&a,vector<bool> used) {
     if(a.size()==n){
-        for (int x:a)
-        {
+        int d=0;
+        for(int x:a){
             cout<<x<<" ";
         }
         cout<<endl;
-            }
+    }
     else{
         for (int i = 0; i < n; i++)
         {
             if(used[i]==false){
                 a.push_back(i);
                 used[i]=true;
-                quaylui(a,used,n);
+                lietke(n,a,used);
                 a.pop_back();
                 used[i]=false;
             }
         }
-
+        
     }
 }
 
-
-int main(){
-    int n;
-    cin>>n;
-    vector<bool> used(n,false);
+int main() {
+    int n; 
+    cin >> n;
     vector<int> a;
-    quaylui(a,used,n);
+    vector<bool> used(n, false);
+    lietke(n, a,used);
 }
-
