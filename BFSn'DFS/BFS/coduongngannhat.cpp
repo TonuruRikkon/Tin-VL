@@ -13,6 +13,7 @@ void bfs(int S)
     queue<int> q;
     q.push(S);
     visited[S]=true;
+    roadto[S]=0;
     while(!q.empty())
     {
         int u = q.front();
@@ -22,7 +23,7 @@ void bfs(int S)
                 visited[x]=1;
                 roadto[x]=roadto[u]+1;
                 trace[x]=u;
-                visited[x]=1;
+                visited[x]=true;
             }
         }
         q.pop();
@@ -59,8 +60,8 @@ int main()
         adj[inp2].push_back(inp1);
     }
     bfs(S);
-    cout<<adj[E]<<endl;
-    if(adj[E]==-1) return 0;
+    cout<<roadto[E]<<endl;
+    if(roadto[E]==-1) return 0;
     find_way(E);
     
 }
