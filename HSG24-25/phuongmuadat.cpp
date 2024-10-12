@@ -30,12 +30,9 @@ int main()
     {
         for (int j = 0; j < n+1; j++)
         {
-            if(b[i][j]>used&&b[i][j]<=k&&m*n>size)
-            {
-                used=b[i][j];
-                size=m*n;
-            }
+                cout<<b[i][j]<<" ";
         }
+        cout<<endl;
     }
     cout<<size;
 }
