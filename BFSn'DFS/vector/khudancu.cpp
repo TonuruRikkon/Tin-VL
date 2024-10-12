@@ -1,8 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-
-int  n,m;
+int n, m;
 vector<vector<int>> a;
 vector<vector<bool>> visited;
 vector<vector<int>> moved;
@@ -24,12 +23,18 @@ void bfs(int x, int y)
         {
             int u = f + dRow[i];
             int v = s + dCol[i];
-            if(!visited[u][v] &&a[u][v]==0 &&u>=0&&u<n &&v>=0&&v<m){
+            if(u>=0 && u<n && v>=0 && v<m && !visited[u][v] && a[u][v]==0 ) {
                 q.push(make_pair(u,v));
-                moved[u][v]=moved[f][s]+1;
+                moved[u][v]=moved[f][s] + 1;
                 visited[u][v]=true;                
             }
-        }
+            else if(u>=0 && u<n && v>=0 && v<m && visited[u][v] && a[u][v]==0 ){
+                if(moved[u][v]>moved[f][s] + 1){
+                    q.push(make_pair(u,v));
+                    moved[u][v]=moved[f][s] + 1;                    
+                }
+            }
+        }   
         
     }
     
@@ -46,7 +51,7 @@ int main()
         for (int j = 0; j < m; j++)
         {
             cin>>a[i][j];
-        }
+        }     
         
     }
     for (int i = 0; i < n; i++)
@@ -67,5 +72,5 @@ int main()
         cout<<endl;
     }
     
-    
+    return 0;
 } 

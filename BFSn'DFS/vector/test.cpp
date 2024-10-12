@@ -20,7 +20,7 @@ void bfs(int x, int y) {
         for (int i = 0; i < 4; i++) {
             int u = f + dRow[i];
             int v = s + dCol[i];
-            if (u >= 0 && u < n && v >= 0 && v < m && !visited[u][v] && a[u][v] == 0) {
+            if (u>=0&&u<n&&v>=0&&v<m&&!visited[u][v]&&a[u][v]==0) {
                 q.push(make_pair(u, v));
                 moved[u][v] = moved[f][s] + 1;
                 visited[u][v] = true;
