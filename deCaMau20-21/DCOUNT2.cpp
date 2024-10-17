@@ -5,15 +5,18 @@ int main()
 {
     int n,ans=0;
     cin>>n;
-    map<long long,int> inp;
+    map<long long,int> isodd; 
     for (int i = 0; i < n; i++)
     {
-        long long x;
+        int x;
         cin>>x;
-        inp[x]++;
-    }
-    for(auto x:inp){
-        if(x.second%2!=0) ans++;
+        isodd[x]++;
+        if(isodd[x]%2!=0){
+            ans++;
+        }
+        else{
+            ans--;
+        }
     }
     cout<<ans;
 }
