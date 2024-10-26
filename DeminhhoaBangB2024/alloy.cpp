@@ -21,9 +21,10 @@ void sangnt(){
 
 int main()
 {
-    int n,d_c=0,s_c=0;
+    freopen("inpfile/alloy.inp","r",stdin);
+    freopen("outfile/alloy.out","w",stdout);
+    int_fast64_t n,d_c=0,s_c=0;
     vector<int> d,s;
-    vector<pair<int,int>> inp;
     cin>>n;
     sangnt();
     for (int i = 0; i < int(1e6); i++)
