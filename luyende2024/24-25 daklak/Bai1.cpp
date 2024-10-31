@@ -3,11 +3,16 @@ using namespace std;
 
 bool check(long long x){
     long long u=x;
+    set<int> d;
     while (u>0)
     {
         long long v=u%10;
-        if(v==0||x%v!=0) return false;
+        if(v==0) return false;
+        d.insert(v);
         u=u/10;
+    }
+    for(int y:d){
+        if(x%y!=0) return false;
     }
     return true;
 }
