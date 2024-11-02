@@ -1,29 +1,29 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-bool visited[int(1e6)];
-vector<vector<int,int>> adj(int(1e6));
+vector<bool> visited;
+vector<vector<pair<int,int>>> adj;
 
-void dfs(int s,vector<int> t,vector<int>ans)
+void dfs(int s,vector<int>& t,vector<int>& ans,int& tol)
 {
-    memset(visited,false,sizeof(visited));
-    int d=t[s-1],tol=0;
+    int d=t[s];
     visited[s]=true;
     for(auto x:adj[s]){
         if(visited[x.first]==false){
-            tol+=(d*x.second)
-            d+=t[x.first-1];
-            dfs(x.second);
+            tol+=(d*x.second);
+            d+=t[x.first];
+            dfs(x.first,t,ans,tol);
         }
     }
-    ans.push_back(tol);
 }
 
 int main()
 {
     int n,k;
     cin>>n>>k;
-    vector<int> t;
+    adj.resize(n+1);
+    visited.resize(n+1,false);
+    vector<int> t(n+1),ans;
     for (int i = 0; i < n-1; i++)
     {
         int x,y,w;
@@ -31,19 +31,29 @@ int main()
         adj[x].push_back({y,w});
         adj[y].push_back({x,w});
     }
-    for(int i=0;i<n;i++){
-        int x;
-        cin>>x;
-        t.push_back(x);
+    for(int i=1;i<=n;i++){
+        cin>>t[i];
     }
-    cout<<*max_elemet(adj.begin(),adj.end())<<" "<<*min_element(adj.begin(),adj.end())<<" ";
-    if(k>*max_elemet(adj.begin(),adj.end())){
+    for (int i = 1; i <= n; i++)
+    {
+        int tol=0;
+        fill(visited.begin(),visited.end(),false);
+        dfs(i,t,ans,tol);
+        ans.push_back(tol);
+    }
+    
+    for(int x:ans) cout<<x<<" ";
+    cout<<endl;
+
+    int maxx=*max_element(ans.begin(),ans.end()),minn=*min_element(ans.begin(),ans.end());
+    cout<<maxx<<" "<<minn<<" ";
+    if(k>maxx){
         cout<<"YES";
     }
-    else if(k<*min_element(adj.begin(),adj.end())){
-        cout<<"NO"
+    else if(k<minn){
+        cout<<"NO";
     }
     else{
-        cout<<"OK"
+        cout<<"OK";
     }
 }
