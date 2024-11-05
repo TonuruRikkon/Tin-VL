@@ -15,11 +15,11 @@ int main()
     }
     int m;
     cin>>m;
+    sort(a.begin(),a.end());
     for (int i = 0; i < m; i++)
     {
         int x,y;
         cin>>x>>y;
-        sf.push_back(make_pair(x,y));
-    }
-    
+        cout<<(upper_bound(a.begin(),a.end(),y)-a.begin())-(lower_bound(a.begin(),a.end(),x)-a.begin())<<endl;
+    } 
 }
