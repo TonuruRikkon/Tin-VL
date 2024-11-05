@@ -19,15 +19,18 @@ void demuoc()
 
 int main()
 {
+    freopen("CHIPHI.INP","r",stdin);
+    freopen("CHIPHI.OUT","w",stdout);
     int t;
     cin>>t;
     demuoc();
     for (int i = 0; i < t; i++)
     {
-        int n,m;
+        int n,m,ans=0;
         cin>>n>>m;
-        int a[n+1][m+1];
+        int a[n+1][m+1],b[n+1][m+1];
         memset(a,0,sizeof(a));
+        memset(b,0,sizeof(b));
         for (int i = 1; i <= n; i++)
         {
             for (int j = 1; j <= m; j++)
@@ -37,16 +40,15 @@ int main()
                 a[i][j]=d[x];
             }
         }
-        for (int i = 1; i < n; i++)
+
+        for (int i = 1; i <= n; i++)
         {
-            for (int j = 1; j < m; j++)
+            for (int j = 1; j <= m; j++)
             {
-                a[i][j]=a[i-1][j-1]+min(a[i-1][j],a[i][j-1]);
+                b[i][j]=a[i][j]+min(b[i-1][j],b[i][j-1]);
             }
-            
         }
-        
-        
+        cout<<b[n][m];
     }
     
 }
