@@ -5,7 +5,7 @@ int main()
 {
     int n,k,ans=0;
     cin>>n>>k;
-    vector<int> a,b;
+    vector<long long> a,b;
     for (int i = 0; i < n; i++)
     {
         int x;
@@ -18,7 +18,7 @@ int main()
         cin>>x;
         b.push_back(x);
     }
-    int date=-*max_element(a.begin(),a.end())-k;
+    long long date=-*max_element(a.begin(),a.end())-k;
     while (a.empty()==false)
     {
         int maxx=max_element(b.begin(),b.end())-b.begin();
@@ -26,8 +26,8 @@ int main()
             date=a[maxx];
             ans+=b[maxx];
         }
-        int lowest=lower_bound(a.begin(),a.end(),a[maxx]-k)-a.begin();
-        int highest=upper_bound(a.begin(),a.end(),a[maxx]+k)-a.begin()-1;
+        int lowest=lower_bound(a.begin(),a.end(),a[maxx]-(k-1))-a.begin();
+        int highest=upper_bound(a.begin(),a.end(),a[maxx]+(k-1))-a.begin();
         a.erase(a.begin()+lowest,a.begin()+highest);
         b.erase(b.begin()+lowest,b.begin()+highest);
     }
