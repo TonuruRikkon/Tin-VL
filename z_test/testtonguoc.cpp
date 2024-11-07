@@ -9,7 +9,7 @@ void tonguoc()
     
     for (int i = 1; i <= int(1e6); i++)
     {
-        for (int j = 1; j <= int(1e6); j+=i)
+        for (int j = i; j <= int(1e6); j+=i)
         {
             tol[j]+=1;
         }
@@ -22,9 +22,10 @@ int main()
 {
     int a;
     cin>>a;
+    tonguoc();
     for (int i = 0; i < a; i++)
     {
-        cout<<tol[i];
+        cout<<tol[i]<<" ";
     }
     
 }
