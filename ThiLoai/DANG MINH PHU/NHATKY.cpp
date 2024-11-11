@@ -25,14 +25,20 @@ int main()
             am=0;
         }
     }
-     if(am==1&&temp!=0) a[0-temp]++;
-        else if(am==0&&temp!=0) a[temp]++;
-        temp=0;
-        am=0;
+    if(am==1&&temp!=0) a[0-temp]++;
+    else if(am==0&&temp!=0) a[temp]++;
+    temp=0;
+    am=0;
     for(auto x:a){
-        ans+=a[s-x.first]*a[x.first];
-        a[s-x.first]=0;
-        a[x.first]=0;
+        if(s-x.first==x.first){
+            ans+=a[x.first]/2;
+            a[x.first]=0;
+        }
+        else{
+            ans+=a[s-x.first]*a[x.first];
+            a[s-x.first]=0;
+            a[x.first]=0;
+        }
     }
     cout<<ans;
 }
