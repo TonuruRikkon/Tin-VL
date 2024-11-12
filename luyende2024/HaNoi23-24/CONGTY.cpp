@@ -2,7 +2,7 @@
 using namespace std;
 
 vector<int> p[2*int(1e5)+1];
-int d=0;
+int d[int(1e5)*2];
 
 void bfs(int s,vector<bool>& visited,vector<int> a)
 {
@@ -10,14 +10,15 @@ void bfs(int s,vector<bool>& visited,vector<int> a)
     queue<int> q;
     q.push(s);
     visited[s]=true;
-    int u=s;
     while (q.empty()==false)
     {
-        for(int v:p[s]){
+        int u=q.front();
+        d[u]=true;
+        for(int v:p[u]){
             if(visited[v]==false){
                 q.push(v);
                 visited[v]=true;
-                if(a[v-1]<a[u-1]) d++;
+                if(a[v-1]>a[u-1]) d[u]=false;
             }
         }
         q.pop();
@@ -43,13 +44,13 @@ int main()
         cin>>x;
         p[x].push_back(i+1);
     }
+    bool d[n+1];
     for (int i = 0; i < q; i++)
     {
+        memset(d,false,sizeof(d));
         int x;
         cin>>x;
-        d=0;
         bfs(x,visited,a);
-        cout<<d;
     }
     
 }
