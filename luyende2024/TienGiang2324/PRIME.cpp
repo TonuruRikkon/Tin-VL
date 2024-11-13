@@ -7,6 +7,7 @@ vector<int> dUoc(int(1e6)+1,0);
 void sangnt(){
     ngto.resize(int(1e6),true);
     dUoc.resize(int(1e6)+1,0);
+    fill(ngto.begin(),ngto.end(),true);
     ngto[0]=ngto[1]=false;
     int p=2;
     while (p*p<=int(1e6))
@@ -36,9 +37,7 @@ int main()
             ans=x;
             
         }
-        cout<<dUoc[x]<<" ";
     }
-    cout<<endl;
     cout<<ans;
     
 }
