@@ -38,13 +38,13 @@ bool tonguoc(int s)
 
 int main()
 {
-    int n,tol=0;
+    int n,toln=0;
     cin>>n;
     sangnt();
     for (int i = 1; i <= n; i++)
     {
-        if(tonguoc(i)==true) tol++;
+        if(tonguoc(i)==true) toln++;
     }
     cout<<endl;
-    cout<<tol<<endl<<ngto[289];
+    cout<<toln<<endl<<ngto[289];
 }
