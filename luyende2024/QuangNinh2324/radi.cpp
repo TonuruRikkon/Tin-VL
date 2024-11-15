@@ -21,44 +21,39 @@ int main()
     map<int,bool> mineable_r,mineable_c;
     for(int i=1;i<=m;i++){
         mineable_r[r[i]]=true;
-        cout<<r[i]<<" ";
     }
-    cout<<endl;
     for(int i=1;i<=n;i++){
-        mineable_c[c[i]]=true;
-        cout<<c[i]<<" ";
-    }
-    cout<<endl;
-    for(auto x:mineable_r){
-        if(x.second==true){
-            if(mineable_r[x.first]==mineable_c[x.first]){
-                d++;
-            }            
-        }
+        int temp=c[i];
+        mineable_c[temp]=true;
+        if(mineable_r[temp]==true&&mineable_c[temp]==true) d++;
     }
     for (int i = 0; i < q; i++)
     {
         int x,y,z;
         cin>>x>>y>>z;
+        int temp_r=r[x],temp_c=c[y];
         if(r[x]<z){
-            if(mineable_r[r[x]]==true) {
-                mineable_r[r[x]]=false;
-                mineable_r[z]=true;
-                if(mineable_c[c[y]]==true){
+            if(mineable_r[temp_r]==true) {
+                if(mineable_c[temp_r]==true){
                     d--;
                 }
             }
+            mineable_r[temp_r]=false;
+            mineable_r[z]=true;
+            r[x]=z;
         }
         if(c[y]<z){
-            if(mineable_c[c[y]]==true){
-                mineable_c[c[y]]=false;
-                mineable_c[z]=true;
-                if(mineable_r[r[x]]==true){
+            if(mineable_c[temp_c]==true){
+                if(mineable_r[temp_c]==true){
                     d--;
                 }
             }
+            mineable_c[temp_c]=false;
+            mineable_c[z]=true;
+            c[y]=z;
+            if(mineable_r[z]==true&&mineable_c[z]==true) d++;
         }
-        if(mineable_r[z]==true&&mineable_c[z]==true) d++;
+        
         cout<<d<<endl;
     }
     
