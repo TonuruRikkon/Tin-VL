@@ -3,15 +3,22 @@ using namespace std;
 
 int main()
 {
-    int n;
+    int n,ans=0,tol=0;
     cin>>n;
-    int tol[n+1];
-    memset(tol,0,sizeof(tol));
+    map<int,int> thongke;
+    thongke[0]=0;
     for (int i = 1; i <= n; i++)
     {
         int x;
         cin>>x;
-        tol[i]=tol[i-1]+x;
+        tol+=x;
+        if(thongke.find(tol)==thongke.end()){
+            thongke[tol]=i;
+        }
+        else if(thongke.find(tol)!=thongke.end()){
+            ans=max(ans,i-thongke[tol]);
+        }
     }
+    cout<<ans;
     
 }
