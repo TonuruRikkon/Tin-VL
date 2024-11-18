@@ -3,7 +3,7 @@ using namespace std;
 
 bool ngto[int(1e6)+1];
 int tonguoc[int(1e6)+1];
-
+\
 int sangnt()
 {
     memset(ngto,true,sizeof(ngto));
