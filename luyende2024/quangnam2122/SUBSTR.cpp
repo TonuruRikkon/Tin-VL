@@ -11,12 +11,12 @@ int main()
     cin>>str;
     for (int i = 0; i <= str.size(); i++)
     {
-        if(str[i]==0){
+        if(str[i]=='1'){
             tol.push_back(tol[i]+1);
         }
         else{
             tol.push_back(tol[i]);
         }
     }
-    cout<<upper_bound(tol.begin(),tol.end(),k)-tol.begin()-k-1;
+    cout<<upper_bound(tol.begin(),tol.end(),k)-tol.begin();
 }
