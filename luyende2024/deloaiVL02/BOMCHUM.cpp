@@ -3,7 +3,7 @@ using namespace std;
 
 bool ngto[int(1e6)+1];
 int tonguoc[int(1e6)+1];
-\
+
 int sangnt()
 {
     memset(ngto,true,sizeof(ngto));
@@ -15,7 +15,7 @@ int sangnt()
         for (int i = 2; i <= int(1e6)/p; i++)
         {
             ngto[i*p]=false;
-            tonguoc[i*p]
+            tonguoc[i*p];
         }
         
     }
