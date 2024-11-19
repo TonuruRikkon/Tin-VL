@@ -21,6 +21,6 @@ int main()
         cout<<tol;
     }
     else{
-        cout<<int(tol)<<" "<<int(tol*ucln)%ucln<<ucln;
+        cout<<int(tol)<<" "<<int(tol*ucln)%ucln<<" "<<ucln;
     }
 }
