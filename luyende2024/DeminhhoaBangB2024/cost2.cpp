@@ -10,6 +10,7 @@ void dfs(int s,vector<int>& t,vector<int>& cnt,vector<int>& d,int cha)
         if(x.first!=cha){
             dfs(x.first,t,cnt,d,s);
             cnt[s]+=cnt[x.first];
+            cout<<cnt[s]<<" "<<cnt[x.first]<<endl;
             d[s] += d[x.first] + (long long)cnt[x.first] * x.second;
         }
     }
