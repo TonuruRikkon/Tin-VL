@@ -32,10 +32,8 @@ int main()
                     if(tol[i][j]-tol[x][y]<=k){
                         ans=max(ans,(i-x+1)*(j-y+1));
                     }
-                }
-                
+                }   
             }
-            
         }
     }
     cout<<ans;
