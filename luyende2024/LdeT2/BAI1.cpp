@@ -1,8 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-
-
 int main()
 {
     int k,a,b,ans=0;
