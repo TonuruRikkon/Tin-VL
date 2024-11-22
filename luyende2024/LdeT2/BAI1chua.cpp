@@ -9,10 +9,10 @@ void sangnt()
     memset(ngto, true, sizeof(ngto));
     ngto[0]=ngto[1]=false;
     int p=2;
-    while (p*p<=int(1e6))
+    while (p*p<=int(1e5))
     {
         ngt.push_back(p);
-        for (int i = 2; i <= int(1e6)/p; i++)
+        for (int i = 2; i <= int(1e5)/p; i++)
         {
             ngto[i*p]=false;
         }
