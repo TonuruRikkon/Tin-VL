@@ -16,26 +16,20 @@ void sangnt()
         }
         for(p++;p*p<=int(1e6)&&ngto[p]==false;p++);
     }
-    
 }
 
 int main()
 {
-    freopen("BAI02.INP","r",stdin);
-    freopen("BAI02.INP","w",stdout);
-    int n;
-    cin>>n;
     sangnt();
-    for (int i = 0; i < n; i++)
+    long long a,b;
+    int ans=0;
+    cin>>a>>b;
+    for (int i = a; i <= b; i++)
     {
-        long long a;
-        cin>>a;
-        int sqrta=sqrt(a);
-        if(sqrt(a)==sqrta&&ngto[sqrta]==true)
-        {
-            cout<<"YES"<<endl;
-        } 
-        else cout<<"NO"<<endl; 
+        long long sqrtx=sqrt(i);
+        if(sqrtx*sqrtx==i){
+            if(ngto[sqrtx]==true) ans++;
+        }
     }
-    
+    cout<<ans;
 }
