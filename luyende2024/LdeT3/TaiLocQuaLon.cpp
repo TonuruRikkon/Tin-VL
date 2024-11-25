@@ -29,10 +29,8 @@ int main()
         ans=char((tol%10)+'0')+ans;
         tol/=10;
     }
-    while (tol!=0)
-    {
-        ans=char((tol%10)+'0')+ans;
-        tol/=10;
+    if(tol!=0){
+        ans=to_string(tol)+ans;
     }
     cout<<ans;
 }
