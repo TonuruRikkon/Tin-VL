@@ -1,31 +1,38 @@
-#include <bits/stdc++.h> 
+#include <bits/stdc++.h>
 using namespace std;
 
-bool ngto[int(1e7)];
+struct node {
+   unordered_map <char, node*> um;
+   bool end = 0;
+};
 
-void sangnt()
-{
-    memset(ngto,true,sizeof(ngto));
-    ngto[0]=ngto[1]=false;
-    int p=2;
-    while (p*p<int(1e7))
-    {
-        for (int i = 2; i < int(1e7)/p; i++)
-        {
-            ngto[i*p]=false;
-        }
-        for(p++;p*p<int(1e7)&&ngto[p]==false;p++);
-    }
-    
-}
+int main() {
+   string s, t, sn;
+   int n, m, ans = 0;
+   getline(cin, s);
+   cin >> n;
+   cin.ignore();
+   m = s.size();
+   node *root = new node, *r;
+   while (n--) {
+       r = root;
+       getline(cin, t);
+       for (char ch : t) {
+           if (!(r -> um[ch])) r -> um[ch] = new node;
+           r = r -> um[ch];
+       }
+       r -> end = 1;
+   }
 
-int main()
-{
-    sangnt();
-    for (int i = 0; i < 1000; i++)
-    {
-        if(ngto[i]==true)
-        cout<<i<<" ";
-    }
-    
+   for (int i = 1; i <= m; i++) {
+       int j = i - 1;
+       r = root;
+       while (++j <= m) {
+           if (r -> um[s[j - 1]]) r = r -> um[s[j - 1]];
+           else break;
+           if (r -> end) ans++;
+       }
+   }
+   cout << ans;
+   return 0;
 }
