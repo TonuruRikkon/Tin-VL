@@ -5,7 +5,7 @@ vector<int> inp[int(1e6)+1];
 bool vis[int(1e6)+1];
 int tim[int(1e6)+1],low[int(1e6)+1];
 int timer=0;
-vector<pair<int,int>> bringes,outp;
+vector<pair<int,int>> bridges,outp;
 
 void dfs(int s,int father)
 {
@@ -17,7 +17,7 @@ void dfs(int s,int father)
         if(vis[v]==false){
             dfs(v,u);
             low[u]=min(low[v],low[u]);
-            if(low[v]>low[u]) bringes.push_back({u,v});
+            if(low[v]>tim[u]) bridges.push_back({u,v});
         }
         else{
             low[u]=min(low[v],low[u]);
@@ -27,7 +27,7 @@ void dfs(int s,int father)
 
 void remove_bridges() 
 { 
-    for (auto bridge : bringes) { 
+    for (auto bridge : bridges) { 
         int u = bridge.first;
         int v = bridge.second;
         inp[u].erase(remove(inp[u].begin(), inp[u].end(), v), inp[u].end());
@@ -59,4 +59,20 @@ int main()
         inp[v].push_back(u);
         outp.push_back({u,v});
     }
+    for (int i = 1; i <= n; i++)
+    {
+        if(vis[i]==false){
+            dfs(i,-1);
+        }
+    }
+    cout<<endl;
+    remove_bridges();
+    for (int i = 1; i <= n; i++)
+    {
+        cout<<i<<" ";
+        for(int x:inp[i]) cout<<x<<" ";
+        cout<<endl;
+    }
+    
+    
 }
