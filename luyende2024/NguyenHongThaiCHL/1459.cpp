@@ -1,37 +1,20 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-struct diem
-{
-    int first,second,third;
-};
-
-vector<diem> inp[int(1e7)];
+vector<pair<int,int>> inp[int(1e7)];
 bool vis[int(1e7)];
 int chiphi=0,soloai=0;
 vector<int> ans;
 
-void prim(diem s)
+void prim(pair<int,int> s)
 {
     memset(vis,false,sizeof(vis));
-    priority_queue<diem,vector<diem>,greater<diem>> q;
+    priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>> q;
     q.push(s);
     while (q.empty()==false)
     {
-        auto topp=q.top();
-        int u=topp.second;
-        chiphi+=topp.first;
-        if(vis[u]==true){
-            soloai++;
-            ans.push_back(topp.third);
-        }
-        vis[u]=true;
-        q.pop();            
-        for(auto v:inp[u]){
-            if(vis[v.second]==false){
-                q.push(v);
-            }
-        }
+        auto it = q.top();
+        int u=q.top().second;
         
     }
     
@@ -48,7 +31,7 @@ int main()
         inp[u].push_back({c,v});
         inp[v].push_back({c,u});
     }
-    prim({0,1,0});
+    prim({0,1});
     if(soloai==0) cout<<-1;
     else{
         cout<<chiphi<<" "<<soloai<<endl;

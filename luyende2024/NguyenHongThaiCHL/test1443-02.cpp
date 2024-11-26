@@ -27,8 +27,6 @@ void bfs(int start) {
 }
 
 int main() {
-    freopen("test12.in", "r", stdin);
-    freopen("testout.out", "w",stdout);
     int n, m;
     cin >> n >> m;
     for (int i = 0; i < m; i++) {

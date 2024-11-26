@@ -1,13 +1,13 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-vector<int> inp[int(1e7)];
-bool vis[int(1e7)];
-vector<pair<int,int>> Edges;
+const int MAXN = int(1e5)+5;
+vector<int> inp[MAXN];
+bool vis[MAXN];
+vector<pair<int,int>> mst_Edges;
 
 void bfs(int s)
 {
-    memset(vis,false,sizeof(vis));
     queue<int> q;
     q.push(s);
     vis[s]=true;
@@ -15,10 +15,10 @@ void bfs(int s)
         int u=q.front();
         q.pop();
         for(int v:inp[u]){
-            if(vis[v]==false){
+            if(!vis[v]){
                 vis[v]=true;
+                mst_Edges.push_back({u,v});
                 q.push(v);
-                Edges.push_back({u,v});
             }
         }
     }
@@ -26,9 +26,6 @@ void bfs(int s)
 
 int main()
 {
-    ios_base::sync_with_stdio(false);
-    cin.tie(0);
-    cout.tie(0);
     int n,m;
     cin>>n>>m;
     for (int i = 0; i < m; i++)
@@ -38,11 +35,11 @@ int main()
         inp[u].push_back(v);
         inp[v].push_back(u);
     }
-    
+    fill(vis,vis+n+1,false);
     bfs(1);
-    cout<<Edges.size()<<endl;
-    for(auto x:Edges){
-        cout<<x.first<<" "<<x.second<<endl;
+    cout<<mst_Edges.size()<<endl;
+    for(auto x:mst_Edges){
+        cout<<x.first<<" "<<x.second<<"\n";
     }
-    
+    return 0;
 }

@@ -1,9 +1,9 @@
 #include<bits/stdc++.h>
 using namespace std;
 int main(){
-    for (int i = 1; i <= 200; i++)
-    {
-        cout<<i<<"\n";
-    }
+    string str="abc",n;
+    cin>>n;
+    if(str.find(n)==-1) cout<<0;
+    else cout<<str.find(n);
     
 }
