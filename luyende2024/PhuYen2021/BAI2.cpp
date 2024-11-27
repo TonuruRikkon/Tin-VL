@@ -12,9 +12,9 @@ int main()
     while(cin>>str){
         inp.push_back("0"+str);
     }
-    for (int i = 0; i < inp.size(); i++)
+    for (int i = 1; i < inp.size(); i++)
     {
-        for(int j=0;j<inp[i].size();j++){
+        for(int j=1;j<inp[i].size();j++){
             if(inp[i][j]=='x'){
                 if(inp[i-1][j]=='x'||inp[i][j-1]=='x') continue;
                 else{
