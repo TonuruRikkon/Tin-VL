@@ -5,17 +5,24 @@ vector<pair<int,int>> inp[int(1e7)];
 bool vis[int(1e7)];
 int chiphi=0,soloai=0;
 vector<int> ans;
+int pos[int(1e7)];
 
 void prim(pair<int,int> s)
 {
     memset(vis,false,sizeof(vis));
+    memset(pos,int(1e7),sizeof(pos));
     priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>> q;
     q.push(s);
     while (q.empty()==false)
     {
         auto it = q.top();
         int u=q.top().second;
-        
+        pos[u]=min(pos[u],it.first);
+        for(auto v:inp[u]){
+            if(vis[v.second]==false){
+                q.push(v);
+            }
+        }
     }
     
 }
