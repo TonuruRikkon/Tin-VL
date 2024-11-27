@@ -7,6 +7,7 @@ int steps[int(1e6)+1],from[int(1e6)+1];
 
 void Dijstra(pair<int,int> s)
 {
+
     memset(vis,false,sizeof(vis));
     memset(steps,0,sizeof(steps));
     memset(from,0,sizeof(from));
@@ -32,6 +33,8 @@ void Dijstra(pair<int,int> s)
 
 int main()
 {
+    freopen("1428.INP","r",stdin);
+    freopen("1428.OUT","w",stdout);
     vector<char> bo;
     int p,ans=int(1e9);
     char bonhat=0;
