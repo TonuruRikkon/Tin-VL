@@ -1,0 +1,44 @@
+Mô tả
+Đến giờ ăn tối và các con bò vẫn đang ở trên 
+các đồng cỏ của chúng. 
+Bác John rung chuông, các con bò bắt đầu đi về 
+chuồng. 
+Bạn hãy tính xem con bò nào đi về chuồng đầu tiên 
+(dữ liệu vào của bài toán luôn đảm bảo có đúng một 
+con bò về nhanh nhất).
+
+Mỗi con bò được thả trên một đồng cỏ riêng biệt. 
+Mỗi đồng cỏ được kết nối bằng một đường đi với một 
+hoặc nhiều đồng cỏ khác (kể cả chính đồng cỏ đó). 
+Đôi khi, hai đồng cỏ được kết nối bởi nhiều hơn một 
+đường đi. Các đồng cỏ luôn có ít nhất một đường đi 
+tới chuồng. Vì vậy, tất cả các con bò có một đường 
+đi tới chuồng và chúng luôn biết đường đi ngắn nhất. 
+Tất nhiên, các con bò có thể đi theo cả hai hướng 
+trên một con đường và chúng luôn đi với tốc độ như 
+nhau.
+
+Các đồng cỏ được gán nhãn là 
+‘a’ .. ‘z’ và ‘A’ .. ‘Y’. 
+Một con bò trên mỗi đồng cỏ được 
+gán nhãn bởi một chữ cái in hoa. 
+Không có con bò nào trên một đồng 
+cỏ được gán nhãn bởi chữ cái in thường. 
+Chuồng được gán nhãn là ‘Z’. 
+Không có con bò nào ở trong chuồng cả.
+
+Dữ liệu vào
+Dòng đầu tiên ghi một số nguyên P (1 ≤ P ≤ 10.000) là số các con đường kết nối giữa các đồng cỏ và giữa các đồng cỏ với chuồng. Tiếp theo có P dòng, mỗi dòng ghi hai ký tự là tên các cánh đồng cỏ/chuồng được kết nối và một số nguyên là khoảng cách giữa chúng (1 ≤ khoảng cách ≤ 1000).
+
+Dữ liệu ra
+Gồm một dòng ghi hai phần: một chữ cái viết hoa là tên của đồng cỏ mà con bò thả trên đó sẽ đi về chuồng đầu tiên và độ dài đường đi của con bò đó đi về chuồng.
+
+Ví dụ dữ liệu vào
+5
+A d 6
+B d 3
+C e 9
+d Z 8
+e Z 3
+Ví dụ dữ liệu ra
+B 11
