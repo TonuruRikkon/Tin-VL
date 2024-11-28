@@ -2,29 +2,23 @@
 using namespace std;
 
 vector<pair<int,int>> inp[int(1e6)+1];
-bool vis[int(1e6)+1];
-int steps[int(1e6)+1],from[int(1e6)+1];
+vector<int> steps('z'+1,int(1e9));
 
 void Dijstra(pair<int,int> s)
 {
-
-    memset(vis,false,sizeof(vis));
-    memset(steps,0,sizeof(steps));
-    memset(from,0,sizeof(from));
     priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>> q;
     q.push(s);
-    vis[s.second]=true;
+    steps[s.second]=0;
     while (q.empty()==false)
     {
         auto topp=q.top();
         int u=topp.second;
-        vis[topp.second]=true;
         q.pop();
+        if(topp.first>steps[u]) continue;
         for(auto v:inp[u]){
-            if(vis[v.second]==false){
-                q.push(v);
+            if(steps[v.second]>steps[u]+v.first){
                 steps[v.second]=steps[u]+v.first;
-                from[v.second]=u;
+                q.push({steps[v.second],v.second});
             }
         }
     }
@@ -33,8 +27,6 @@ void Dijstra(pair<int,int> s)
 
 int main()
 {
-    freopen("1428.INP","r",stdin);
-    freopen("1428.OUT","w",stdout);
     vector<char> bo;
     int p,ans=int(1e9);
     char bonhat=0;
@@ -45,7 +37,7 @@ int main()
         int c;
         cin>>u>>v>>c;
         if(u>='A'&&u<='Y') bo.push_back(u);
-        else if(v>='A'&&v<='Y') bo.push_back(v);
+        if(v>='A'&&v<='Y') bo.push_back(v);
         inp[u].push_back({c,v});
         inp[v].push_back({c,u});
     }
