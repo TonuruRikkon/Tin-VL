@@ -1,28 +1,26 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-vector<int> inp[int(11)];
-int vis[11];
+vector<int> inp[10];
+vector<bool> vis(10);
+vector<int> num(10,0),low(10,0);
+int timer=0;
 
-void dfs(int s){
-    for(int v:inp[s]){
-        if(vis[v]==false) {
-            dfs(v);
+void dfs(int s,int father)
+{
+    int u=s,child=0;
+    vis[u]=true;
+    num[u]=low[u]=timer++;
+    for(auto v:inp[u]){
+        if(v==father) continue;
+        if(vis[v]==false){
+            
         }
     }
 }
 
-bool print(int n)
-{
-    for(int i=0;i<=n;i++){
-        if(vis[i]!=1) return false;
-    }    
-    return true;
-}
-
 int main()
 {
-    memset(vis,0,sizeof(vis));
     int n;
     cin>>n;
     cin.ignore();
@@ -30,13 +28,13 @@ int main()
     {
         string str;
         getline(cin,str);
-        for(char x:str){
-            if(x!=' ') {
+        for(int x:str){
+            if(x!=' '){
                 inp[i].push_back(x-'0');
                 inp[x-'0'].push_back(i);
             }
         }
+
     }
-    dfs(0);
-    cout<<print(n);
+    
 }
