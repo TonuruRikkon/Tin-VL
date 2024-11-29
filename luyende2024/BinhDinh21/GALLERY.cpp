@@ -4,6 +4,12 @@ using namespace std;
 vector<pair<int,int>> inp[int(1e6)+1];
 vector<int> cost(int(1e6)+1,int(1e9));
 
+struct guard{
+    int bg,end;
+};
+
+
+
 void dijkstra(pair<int,int> s)
 {
     fill(cost.begin(),cost.end(),int(1e9));
@@ -16,6 +22,7 @@ void dijkstra(pair<int,int> s)
         int u=topp.second;
         q.pop();
         for(auto v:inp[u]){
+            
             if(cost[v.second]>cost[u]+v.first){
                 cost[v.second]=cost[u]+v.first;
                 q.push({cost[v.second],v.second});
