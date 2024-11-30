@@ -7,21 +7,21 @@ int main()
     cin>>n;
     vector<vector<int>> inp(n+1,vector<int>(n+1,0));
     vector<vector<int>> tol(n+1,vector<int>(n+1,0));
-    for (int i = 0; i < n; i++)
+    for (int i = 1; i <= n; i++)
     {
-        for (int j = 0; j < n; j++)
+        for (int j = 1; j <= n; j++)
         {
             cin>>inp[i][j];
+            tol[i][j]=inp[i][j]+tol[i-1][j]+tol[i][j-1]-tol[i-1][j-1];
         }
     }
     for (int i = 1; i <= n; i++)
     {
         for (int j = 1; j <= n; j++)
         {
-            tol[i][j]=inp[i][j]+tol[i-1][j]+tol[i][j-1]-tol[i-1][j-1];
-            cout<<tol[i][j]<<" ";
+            int p1=tol[i][j]
         }
-        cout<<"\n";
+        
     }
     
 }
