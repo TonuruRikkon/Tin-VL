@@ -36,6 +36,7 @@ int findMaxK(int n, int m) {
     for (auto factor : factors) {
         int p = factor.first;  // Thừa số nguyên tố
         int e = factor.second; // Số mũ của thừa số
+        cout<<p<<":"<<e<<"="<<countPowerInFactorial(n, p)<<" ";
         k = min(k, countPowerInFactorial(n, p) / e);
     }
     return k;
@@ -43,18 +44,14 @@ int findMaxK(int n, int m) {
 
 int main() {
     // Đọc dữ liệu từ file BAI5.INP
-    ifstream inputFile("BAI5.INP");
-    int n, m;
-    inputFile >> n >> m;
-    inputFile.close();
+    int n,m;
+    cin>>n>>m;
 
     // Tìm K lớn nhất
     int k = findMaxK(n, m);
 
     // Ghi kết quả ra file BAI5.OUT
-    ofstream outputFile("BAI5.OUT");
-    outputFile << k;
-    outputFile.close();
+    cout<<k;
 
     return 0;
 }
