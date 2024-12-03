@@ -42,6 +42,7 @@ int main()
     }
 
     for(auto x:mp){
+        cout<<x.first<<":"<<x.second<<" ";
         ans*=(x.second+1);
     }
     cout<<ans;
