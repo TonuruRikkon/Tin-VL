@@ -38,7 +38,7 @@ int main()
             if(po!=0) mapThaiHoang[x]=po;
         }
     }
-    int ans=1,ans2=1;
+    int_fast64_t ans=1,ans2=1;
     for(auto x:mapThaiHoang){
         ans*=(x.second+1);
         ans2*=(powl(x.first,x.second+1)-1)/(x.first-1);
