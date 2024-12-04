@@ -3,6 +3,17 @@ using namespace std;
 
 int main()
 {
-    int n=int(1e9);
-    cout<<n;
+    string str;
+    int m;
+    cin>>str>>m;
+    while (str.size()>1)
+    {
+        string temp=str.substr(0,10);
+        str.erase(0,10);  
+        long i = stol(temp);
+        str=to_string(i%m)+str;
+    }
+    
+
+    
 }
