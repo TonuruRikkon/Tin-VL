@@ -16,9 +16,19 @@ void sumA(const vector<pair<int, int>>& a) {
         num /= g;
         den /= g;
     }
+    cout<<num<<" "<<den;
 }
 
 int main()
 {
-    
+    vector<pair<int,int>> a;
+    int n;
+    cin>>n;
+    for (int i = 0; i < n; i++)
+    {
+        long long x,y;
+        cin>>x>>y;
+        a.push_back({x,y});
+    }
+    sumA(a);
 }
