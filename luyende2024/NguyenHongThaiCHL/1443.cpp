@@ -1,31 +1,54 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const int MAXN = int(1e5)+5;
-vector<int> inp[MAXN];
-bool vis[MAXN];
-vector<pair<int,int>> mst_Edges;
+vector<int> inp[int(1e6)+1];
+bool vis[int(1e6)+1];
+int tim[int(1e6)+1],low[int(1e6)+1];
+int timer=0;
+vector<pair<int,int>> bridges,outp;
 
-void bfs(int s)
+void dfs(int s,int father)
 {
-    queue<int> q;
-    q.push(s);
-    vis[s]=true;
-    while(!q.empty()){
-        int u=q.front();
-        q.pop();
-        for(int v:inp[u]){
-            if(!vis[v]){
-                vis[v]=true;
-                mst_Edges.push_back({u,v});
-                q.push(v);
-            }
+    int u=s;
+    vis[u]=true;
+    tim[u]=low[u]=++timer;
+    for(int v:inp[u]){
+        if(v==father) continue;
+        if(vis[v]==false){
+            dfs(v,u);
+            low[u]=min(low[v],low[u]);
+            if(low[v]>tim[u]) bridges.push_back({u,v});
         }
+        else{
+            low[u]=min(low[v],low[u]);
+        }
+    }
+}
+
+void remove_bridges() 
+{ 
+    for (auto bridge : bridges) { 
+        int u = bridge.first;
+        int v = bridge.second;
+        inp[u].erase(remove(inp[u].begin(), inp[u].end(), v), inp[u].end());
+        inp[v].erase(remove(inp[v].begin(), inp[v].end(), u), inp[v].end()); 
+    } 
+} 
+void print_tree(int u, int father) 
+{
+    vis[u] = true; cout << u << " ";
+    for (int v : inp[u]) 
+    {
+        if (v != father && !vis[v])
+        {
+            print_tree(v, u);
+        } 
     }
 }
 
 int main()
 {
+    memset(vis,false,sizeof(vis));
     int n,m;
     cin>>n>>m;
     for (int i = 0; i < m; i++)
@@ -34,12 +57,21 @@ int main()
         cin>>u>>v;
         inp[u].push_back(v);
         inp[v].push_back(u);
+        outp.push_back({u,v});
     }
-    fill(vis,vis+n+1,false);
-    bfs(1);
-    cout<<mst_Edges.size()<<endl;
-    for(auto x:mst_Edges){
-        cout<<x.first<<" "<<x.second<<"\n";
+    for (int i = 1; i <= n; i++)
+    {
+        if(vis[i]==false){
+            dfs(i,-1);
+        }
     }
-    return 0;
+    cout<<endl;
+    remove_bridges();
+    bool vis_print[int(1e6)+1];
+    for (int i = 1; i <= n; i++)
+    {
+        
+    }
+    
+    
 }
