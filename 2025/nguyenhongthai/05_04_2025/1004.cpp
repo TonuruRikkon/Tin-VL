@@ -6,18 +6,15 @@ int main()
     unsigned long long a,b;
     cin>>a>>b;
     unsigned long long c=a+b;
-    for(int i=1; i<c;i++){
-        if(c%i==0){
-            if((((c/i)-1)+(i-1))*2<=a){
-                if(i>=c/i){
-                    cout<<i<<" "<<(a+b)/i;
-                    break;
-                }
-                else{
-                    cout<<(a+b)/i<<" "<<i;
-                    break;
-                }                
-            }
-        }
+    double delta=9*9-4*(-1)*((-2)*c);
+    double x1=((-9)+sqrt(delta))/(-2),x2=((-9)-sqrt(delta))/(-2);
+    if(c/x1*x1==c){
+        if(c/x1>x1) cout<<c/x1<<" "<<x1;
+        else cout<<x1<<" "<<c/x1;
     }
+    else{
+        if(c/x2>x2) cout<<c/x2<<" "<<x2;
+        else cout<<x2<<" "<<c/x2;
+    }
+
 }
