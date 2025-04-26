@@ -14,11 +14,6 @@ int main()
     }
     int q;
     cin>>q;
-    vector<int,int> dp(n+1,0);
-    for (int i = 0; i < n; i++)
-    {
-        
-    }
     
     for (int i = 0; i < q; i++)
     {
