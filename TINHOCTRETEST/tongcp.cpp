@@ -11,9 +11,9 @@ int main()
         tol+=n[i]-'0';
     }
     if(tol==int(sqrt(tol))*(sqrt(tol))){
-        cout<<"YES";
+        cout<<"Yes";
     }
     else{
-        cout<<"NO";
+        cout<<"No";
     }
 }
