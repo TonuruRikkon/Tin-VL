@@ -32,9 +32,10 @@ int main()
             ans[y]=x.first;
         }
     }
+    string answer="";
     for (int i = 0; i < n; i++)
     {
-        cout<<ans[i];
+        answer+=ans[i];
     }
-    
+    cout<<answer<<'\n';
 }

@@ -5,7 +5,7 @@ int main()
 {
     int n,d=0;
     cin>>n;
-    vector<int> inp;
+    vector<int> inp,ref=inp;
     for (int i = 0; i < n; i++)
     {
         int x;
@@ -13,15 +13,16 @@ int main()
         inp.push_back(x);
     }
     vector<pair<int,int>> ans;
-    for (int i = 0; i <= n; i++)
-    {
-        auto it=min_element(inp.begin()+i,inp.end());
-        int x=*it;
-        if(inp[i]==x) break;
-        ans.push_back({x,inp[i]});
-        swap(inp[it-inp.begin()],inp[i]);
+    sort(ref.begin(),ref.end());
+    for(int i=0;i<inp.size();i++){
+        for (int j = i+1; j < inp.size(); j++)
+        {
+            if(inp[i]>inp[j]) swap(inp[i],inp[j]);
+            ans.push_back({inp[i],inp[j]});
+            break;
+        }
     }
-    cout<<ans.size()<<'\n';
+    cout<<d<<'\n';
     for(auto x:ans){
         cout<<x.first<<' '<<x.second<<'\n';
     }

@@ -3,6 +3,9 @@ using namespace std;
 
 int main()
 {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
     int n,k,x,anger=0,comp=0;
     cin>>n>>k>>x;
     vector<int> goods;
@@ -12,7 +15,7 @@ int main()
         cin>>inp;
         goods.push_back(inp);
     }
-    int s=1;
+    int s=0;
     while(true)
     {
         s+=x;
@@ -22,7 +25,6 @@ int main()
             if(d==0){
                 if(goods[i]<=s) {
                     anger++;
-                    cout<<goods[i]<<' '<<s<<'\n';
                 }
             }
             else{
