@@ -4,15 +4,17 @@ using namespace std;
 int main() {
     int n;
     cin >> n;
-    vector<int> a(n);
+    vector<int> inp;
     for (int i = 0; i < n; i++) {
-        cin >> a[i];
+        int x;
+        cin>>x;
+        inp.push_back(x);
     }
     vector<pair<int, int>> ans; 
     for (int i = 0; i < n; i++) {
-        while (a[i] != i + 1) {
-            int j = a[i] - 1; 
-            swap(a[i], a[j]);
+        while (inp[i] != i + 1) {
+            int j = inp[i] - 1; 
+            swap(inp[i], inp[j]);
             ans.push_back({i + 1, j + 1});
         }
     }
