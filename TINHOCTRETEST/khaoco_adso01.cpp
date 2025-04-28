@@ -15,14 +15,15 @@ int main(){
     for(char& x : s1) mp1[x]++;
     for(char& x : s2) mp2[x]++;
 
-    // cout << s1 << " " << s2 << endl << endl;
-    // for(auto& x : mp1){
-    //     cout << x.first << " " << x.second << endl;
-    // }
-    // cout << endl;
-    // for(auto& x : mp2){
-    //     cout << x.first << " " << x.second << endl;
-    // }
+    cout << s1 << " " << s2 << endl << endl;
+    for(auto& x : mp1){
+        cout << x.first << " " << x.second << endl;
+    }
+    cout << endl;
+    for(auto& x : mp2){
+        cout << x.first << " " << x.second << endl;
+    }
+    
     for(auto& x : mp1){
         if(mp1[x.first] > mp2[x.first] && mp1[x.first] - mp2[x.first] != 1){
             s1 = s.substr(0, s.size()/2);

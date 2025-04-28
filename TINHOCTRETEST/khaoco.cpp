@@ -3,6 +3,8 @@ using namespace std;
 
 int main()
 {
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
     int k;
     cin>>k;
     string V;
@@ -10,22 +12,24 @@ int main()
     if(k==1){
         reverse(V.begin(),V.end());
     }
-    int pos=V.size()/2;
-    string ans="";
-    for (int i = 0; i < V.size()/2; i++)
+    map<char,int> tol;
+    char doub;
+    for(int i=0;i<V.size();i++){
+        tol[V[i]]++;
+    }
+    for (char i = 'a'; i <= 'z'; i++)
     {
-        if(V[i]!=V[pos+i]){
-            string U=V,E=V;
-            E.erase(pos+i,1);
+        if(tol[i]%2!=0) doub=i;
+    }
+    string ans="";
+    for (int i = 0; i <= V.size(); i++)
+    {
+        if(V[i]==doub){
+            string U=V;
             U.erase(i,1);
             if(U.substr(0,U.size()/2)==U.substr(U.size()/2)){
                 cout<<V[i]<<'\n';
                 cout<<U.substr(0,U.size()/2);
-                return 0;
-            }
-            else if(E.substr(0,E.size()/2)==E.substr(E.size()/2)){
-                cout<<V[pos+i]<<'\n';
-                cout<<E.substr(0,E.size()/2);
                 return 0;
             }
         }

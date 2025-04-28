@@ -1,0 +1,8 @@
+Cho một hoán vị a=(a1,a2,a3,...,aN)
+ của (1,2,3,N);
+.
+
+Hãy biến đổi a thành (1,2,3,4,...,n) bằng cách thực hiện thao tác sau từ 0  đến n-1 lần: “Chọn một cặp số nguyên 
+(i,j) bất kỳ sao cho 1<=i<j<=n. Hoán đổi các phần tử tại vị trí thứ i và j trong mảng a.”.
+
+Có thể chứng minh rằng với các ràng buộc đã cho, luôn có thể biến đổi a thành (1,2,3,...,n).
