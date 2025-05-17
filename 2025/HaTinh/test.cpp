@@ -37,7 +37,7 @@ int main() {
             auto max_it = max_element(start, ends, [](const pair<int, int>& a, const pair<int, int>& b) {
                 return a.second < b.second; // So sánh dựa trên số khách hàng
             });
-            cout << inp[max_it].second<< '\n'; // In ra số khách hàng mua nhiều nhất
+            cout << max_it->second << '\n'; // In ra số khách hàng mua nhiều nhất
         }
     }
 

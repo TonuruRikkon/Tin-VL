@@ -25,9 +25,11 @@ int main()
         int x,y;
         cin>>x>>y;
         int start=lower_bound(inp.begin(),inp.end(), make_pair(x,INT_MIN))-inp.begin();
-        int ends=lower_bound(inp.rbegin(),inp.rend(), make_pair(y,INT_MIN))-inp.rbegin();
-        cout<<start<<' '<<ends<<'\n';
-        max_element(inp.begin(), inp.end(), [](const auto& lhs, const auto& rhs) { return lhs.second < rhs.second; });
+        int ends=upper_bound(inp.begin(),inp.end(),make_pair(y,INT_MIN))-inp.begin();
+        auto max_it=max_element(start, ends-1, [](const pair<int, int>& a, const pair<int, int>& b) {
+            return a.second < b.second;
+        });
+        cout<<max_it->second;
     }
     
 }
