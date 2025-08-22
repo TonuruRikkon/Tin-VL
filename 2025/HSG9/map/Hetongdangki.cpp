@@ -3,6 +3,8 @@ using namespace std;
 
 int main()
 {
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
     int n;
     map<string,int> inp;
     cin>>n;
@@ -13,7 +15,9 @@ int main()
         if(inp[str]==0){
             cout<<"OK"<<'\n';
         }
-        else cout<<str+char('0'+inp[str])<<'\n';
+        else {
+            cout<<str<<inp[str]<<'\n';
+        }
         inp[str]++;
     }
     
