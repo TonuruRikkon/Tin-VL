@@ -53,4 +53,19 @@ Gốc acid béo ko no bị oxi hóa $\longrightarrow$ chất có mùi khó chị
 ## Xà phòng và chất giặt rửa
 ### Khái niệm:
 - Xà phòng: là muối của Na,K với các acid béo.
-- Chất giặt rửa: là chất được tổng hợp có tác dụng tẩy rửa giống xà phòng 
+- Chất giặt rửa: là chất được tổng hợp có tác dụng tẩy rửa giống xà phòng. Thường là muối alkylsunfate hoặc alkylbenen sulfate.
+- Chất tẩy rửa tự nhiên: bồ kết, bồ hòn,...
+### Cấu tạo:
+- Xà phòng: $R-COONa$
+- Chất giặt rửa: <br>
+$R-SO_3Na$<br>
+$R-SO_4Na$<br>
+### Sản xuất:
+**1. Xà phòng:**
+
++ Chất béo $+ NaOH \xrightarrow{t^{o}}{} R-COONa + C_3H_5(OH)_3$
++ Alkane $\longrightarrow R-COOH \longrightarrow R-COONa$
+
+**2. Chất giặt rửa:**
++ Dầu mỏ $\longrightarrow R-SO_3H \longrightarrow R-SO_3Na$
++ Dầu mỏ $\longrightarrow R-SO_4H \longrightarrow R-SO_4Na$

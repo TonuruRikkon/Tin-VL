@@ -18,5 +18,4 @@ int main()
         dp[i]=dp[i-1]+inp[s[i-1]-'a'];
     }
     
-    cout<<ans;
 }
