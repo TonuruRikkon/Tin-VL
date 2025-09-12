@@ -40,12 +40,12 @@ int main()
                 //     break;
                 // }
                 // else{
-                    int top_pos=out_pos[y.top()];
+                    int top_pos=inp_pos[y.top()];
                     if(top_pos<pos){
                         y.emplace(x);
                         ok=true;
                         break;
-                    }   
+                    }
                 // }
             }
 

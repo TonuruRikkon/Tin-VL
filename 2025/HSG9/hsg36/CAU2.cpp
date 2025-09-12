@@ -20,7 +20,7 @@ int main()
         if(inp[i]<x1){
             temp.push_back(x1);
             ans.emplace_back(temp);
-            temp.erase(temp.begin(),temp.end());
+            temp.clear();
         }
         else{
             temp.push_back(x1);
