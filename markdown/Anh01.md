@@ -10,7 +10,7 @@
  - devote(v): Hy sinh
  - account(n): câu chuyện/ghi chép 
  - youth(n): tuổi trẻ
-
+v
 
 ## Grammar:
 ### Simple past sentence(QKĐ):

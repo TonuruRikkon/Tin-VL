@@ -4,6 +4,7 @@ using namespace std;
 int main()
 {
     int n;
+    cin>>n;
     vector<int> inp;
     for (int i = 0; i < n; i++)
     {
@@ -25,7 +26,6 @@ int main()
             for(auto &x:piles){
                 if(inp[i]<x.top()){
                     x.push(inp[i]);
-                    check=true;cout<<'a';
                     break;
 
                 }
