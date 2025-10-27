@@ -31,12 +31,11 @@ long long dem(vector<int> inp, int n,int k, int m)
                 break;
             }
             
-            cnt[l]--;
+            cnt[inp[l]]--;
             l++;
 
         }
         ans=max(ans,r-l+1);
-
     }
     return ans;
 }
@@ -55,5 +54,6 @@ int main()
     }
 
     cout<<dem(inp,n,k,m);
+
     
 }
