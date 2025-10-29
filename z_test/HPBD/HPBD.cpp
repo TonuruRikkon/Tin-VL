@@ -14,8 +14,23 @@ int main()
     string welcome="What is your birthday?";
     coutstr(welcome); cout<<"\n";
     
-    int d,m,y;
-    cin>>d>>m>>y;
+    string inp;
+    getline(cin,inp);
+    vector<int> date(3);
+    int temp=0,i=0;
+    for(char x:inp){
+        if(x<'0'||x>'9') {
+            if(temp!=0){
+                date[i]=temp;
+                i++;
+            }   
+            temp=0;
+        }
+        else temp=temp*10+int(x-'0');
+    }
+    date[2]=temp;
+
+    int d=date[0],m=date[1],y=date[3];
 
     time_t timestamp = time(&timestamp);
     struct tm datetime = *localtime(&timestamp);

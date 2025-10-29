@@ -5,14 +5,17 @@ int main()
 {
     int n;
     cin>>n;
-    vector<vector<int>> inp(n+1);
     for (int i = 0; i < n; i++)
     {
         int x,y;
         cin>>x>>y;
-        inp[x].push_back(y);
-        inp[y].push_back(x);
     }
+    
+    for (int i = 0; i < n; i++)
+    {
+        
+    }
+    
     
 
 }
