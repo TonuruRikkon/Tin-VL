@@ -1,6 +1,12 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+void tolsum()
+{
+    
+}
+
+
 int main()
 {
     int n;
@@ -9,12 +15,10 @@ int main()
     {
         int x,y;
         cin>>x>>y;
+
     }
     
-    for (int i = 0; i < n; i++)
-    {
-        
-    }
+
     
     
 
