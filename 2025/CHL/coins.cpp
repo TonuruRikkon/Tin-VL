@@ -4,21 +4,22 @@ using namespace std;
 int main()
 {
     int n;
-    cin>>n;
-    vector<int> inp(int(1e6)+1,0);
-    inp[0]=1;
+    cin >> n;
+    vector<int> coins(n);
     for (int i = 0; i < n; i++)
     {
-        int x;
-        cin>>x;
-        inp[x]=1;
+        cin >> coins[i];
     }
-    for (int i = 1; i <= int(1e6); i++)
+    sort(coins.begin(), coins.end());
+    long long max_reachable = 0;
+    for (int i = 0; i < n; i++)
     {
-        if(inp[i]==0){
-            cout<<i;
+        if (coins[i] > max_reachable + 1)
+        {
             break;
         }
+        max_reachable += coins[i];
     }
-    
+    cout << max_reachable + 1 << endl;
+    return 0;
 }
