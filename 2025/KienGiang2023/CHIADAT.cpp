@@ -1,8 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-
-
 int main()
 {
     int n;
@@ -13,25 +11,18 @@ int main()
     {
         cin>>inp[i];
     }
-    long long A=0,B=0,C=0,A2=0,B2=0,C2=0;
+    long long PhuongAn=1;
     for (int i = 0; i < n/2; i++)
     {
-        for (int j = 0; j < 4; j++)
+        PhuongAn*=4;
+    }
+    for (long long i = 0; i < PhuongAn; i++)
+    {
+        int A1=0,B1=0,C1=0,A2=0,B2=0,C2=0;
+        for (int i = 0; i < n/2; i++)
         {
-            if(j==0) {
-                A+=inp[i];
-            }
             
-            else if(j==1) {
-                B+=inp[i];
-            }
-            
-            else if(j==2) {
-                C+=inp[i];
-            }
         }
         
     }
-    
-
 }
