@@ -25,6 +25,7 @@ int main()
     int n;
     cin>>n;
     sangnt();
+    bool check=false;
     for (int i = 0; i < n; i++)
     {
         int x;
@@ -36,7 +37,10 @@ int main()
             }
             if(y>x) break;
         }    
-        if(ref%5==0) cout<<x<<' ';
+        if(ref%5==0) {
+            cout<<x<<' ';
+            check=true;
+        }
     }
-    
+    if(check==false) cout<<-1;
 }
