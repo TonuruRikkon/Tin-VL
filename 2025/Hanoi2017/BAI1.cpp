@@ -57,7 +57,7 @@ string div(string a, int b)
     string ans;
     int sz=a.size();
     int mem=0;
-    if(a[0]-'0'<b) mem=(a[0]-'0')%10;
+    if(a[0]-'0'<b) mem=(a[0]-'0')%b;
     else ans.push_back((a[0]-'0')/b+'0');
     for (int i = 1; i < sz; i++)
     {
