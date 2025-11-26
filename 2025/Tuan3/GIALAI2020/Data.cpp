@@ -7,30 +7,27 @@ int main()
     cin>>n;
     vector<int> inp(n);
 
-    int ans=0;
+    int ans=0,minn=0,maxx=0;
     for (int i = 0; i < n; i++)
     {
         cin>>inp[i];
     }
-    int last=0,first=0,tol=1;
-    int ansl=0,ansf=0;
-    for (int i = 0; i < n; i++)
+    int l=0,r=1,temp=0;
+    while (r!=n)
     {
-        if(inp[last]<=inp[i]){
-            last=i;
-            tol++;
-        }
-        else{
-            if(tol>ans){
-                ans=tol;
-                ansl=last;
-                ansf=first;
+        if(inp[r]<inp[r-1]){
+            if(ans<temp){
+                ans=temp;
+                minn=l;
+                maxx=r-1;
             }
-            first=i;
-            last=0;
-            tol=1;
+            l=r;
+            temp=0;
         }
+        r++;
+        temp++;
+        
     }
-    cout<<ansf+1<<' '<<ansl+1;
+    cout<<minn+1<<' '<<maxx+1;
     
 }
