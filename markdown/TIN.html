@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>TIN.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="c%E1%BA%A5u-tr%C3%BAc-d%E1%BB%AF-li%E1%BB%87u">Cấu trúc dữ liệu</h1>
+<p><i>khái niệm con trỏ trong tài liệu này chỉ dùng để chỉ giá trị được trỏ đến trong mảng, không phải định nghĩa chính xác của con trỏ</i></p>
+<h2 id="pair">pair</h2>
+<h3 id="khai-b%C3%A1o">khai báo</h3>
+<pre><code>pair&lt;int,char&gt; p;
+</code></pre>
+<h3 id="truy-v%E1%BA%A5n">truy vấn</h3>
+<pre><code>p.first; gọi giá trị đầu tiên của pair
+
+p.seccond; gọi giá trị thứ 2 của pair 
+</code></pre>
+<h2 id="struct">struct</h2>
+<h3 id="khai-b%C3%A1o">khai báo</h3>
+<pre><code>struct(
+    int a;
+    char b,c;
+    string e,f,g;
+    pair&lt;int,int&gt; amogus;
+) tên;
+</code></pre>
+<h3 id="truy-v%E1%BA%A5n">truy vấn</h3>
+<pre><code>tên.a;
+tên.b;
+tên.g;
+tên.amogus.first;
+</code></pre>
+<h2 id="m%E1%BA%A3ng">mảng</h2>
+<h3 id="khai-b%C3%A1o">khai báo</h3>
+<pre><code>int a[n];
+double a[n][m]; mảng 2 chiều 
+pair&lt;int,int&gt; a[n][m][l]; mảng 3 chiều
+</code></pre>
+<h3 id="c%C3%A1c-h%C3%A0m-th%C3%B4ng-d%E1%BB%A5ng">Các hàm thông dụng</h3>
+<h2 id="sort-s%E1%BA%AFp-x%E1%BA%BFp-onlogn">sort (sắp xếp) O(NlogN)</h2>
+<p><strong>sort(a+1,a+1+n);</strong></p>
+<p>hoặc <strong>sort(a,a+n);</strong> nếu mảng bắt đầu từ i=0</p>
+<h2 id="binary-search-t%C3%ACm-ki%E1%BA%BFm-nh%E1%BB%8B-ph%C3%A2n-ologn">binary search (Tìm kiếm nhị phân) O(logN)</h2>
+<p><strong>Chỉ có thể sử dụng trên mảng đã sắp xếp</strong></p>
+<p><strong>binary_search(a+1,a+1+n,val);</strong> Tìm giá trị val</p>
+<p><strong>lower_bound(a+1,a+1+n, val);</strong> Tìm giá trị đầu tiên &gt;=val</p>
+<p><strong>upper_bound(a+1,a+1+n, val);</strong> Tìm giá trị đầu tiên &gt;val</p>
+<p>2 hàm trên sẽ trả về n+1 nếu không có giá trị nào trong mảng thỏa mãn</p>
+<hr>
+<h2 id="vector">vector</h2>
+<h3 id="khai-b%C3%A1o">khai báo</h3>
+<pre><code>vector&lt;int&gt; v; //vector 1 chiều 
+vector&lt;vector&lt;int&gt;&gt; v; //vector 2 chiều
+vector&lt;vector&lt;vector&lt;int&gt;&gt; v; //vector 3 chiều
+vector&lt;int&gt; v(n); //tạo vector với n phần tử có sẵn(có thể đặt giá trị vào các vị trí)
+vector&lt;int&gt; v(n,0); //tạo vector với n phần tử có sẵn với giá trị 0.
+</code></pre>
+<h3 id="truy-v%E1%BA%A5n">truy vấn</h3>
+<pre><code>v[i] //truy vấn tại vị trí i+1(index i)
+v.at(i) //truy vấn tại vị trí i-1 nhưng có thêm cảnh báo nếu 
+v.push_back(i); //chèn giá trị i vào cuối vector
+v.pop_back(i); //loại bỏ phần tử cuối của vector
+v.size(); //gọi kích thước của 
+v.empty(); //kiểm tra xem vector có rỗng không -&gt;trả về true(có) hoặc false(không)
+
+
+truy vấn các phần tử trong vector:
+
+vòng for thông thường:
+for(int i=0;i&lt;v.size();i++){
+    cout&lt;&lt;v.at(i)&lt;&lt;' ';
+}
+
+vòng for với pointer(con trỏ):
+for(auto &amp;i: v){
+    cout&lt;&lt;i&lt;&lt;' ';
+}
+</code></pre>
+<h3 id="c%C3%A1c-h%C3%A0m-th%C3%B4ng-d%E1%BB%A5ng">các hàm thông dụng</h3>
+<p>tương tự với mảng được triển khai bằng cú pháp:</p>
+<p><strong>hàm(v.begin(),v.end(),val);</strong></p>
+<h4 id="v%C3%AD-d%E1%BB%A5">ví dụ:</h4>
+<p>sort(v.begin(),v.end());</p>
+<p>lower_bound(v.begin(),v.end(),i);</p>
+<h2 id="stacklifo">stack(LIFO)</h2>
+<p>vào trước ra sau</p>
+<h3 id="khai-b%C3%A1o">khai báo</h3>
+<pre><code>stack&lt;long long&gt; stk;
+stack&lt;pair&lt;long long, double&gt;&gt; stk;
+</code></pre>
+<h3 id="truy-v%E1%BA%A5n">truy vấn</h3>
+<pre><code>stk.top(); //lấy giá trị trên cùng của stack
+stk.push(); //chèn giá trị vào vị trí trên cùng của stack
+stk.pop(); //loại bỏ giá trị trên cùng của set
+stk.size(); //lấy độ dài của 
+stk.empty(); //kiểm tra stack có rỗng không tương tự như vector
+</code></pre>
+<h2 id="queue-fifo">Queue (FIFO)</h2>
+<p>vào trước ra trước</p>
+<h3 id="khai-b%C3%A1o">khai báo</h3>
+<pre><code>queue&lt;int&gt; q;
+queue&lt;pair&lt;int,string&gt;&gt; q;
+queue&lt;vector&lt;pair&lt;double,string&gt;&gt;&gt; q;
+</code></pre>
+<h3 id="truy-v%E1%BA%A5n">truy vấn</h3>
+<pre><code>queue không thể truy vấn bằng index(vị trí)
+q.front(); //Lấy giá trị đầu tiên trong queue
+q.back(); //lấy giá trị cuối cùng trong q
+q.pop(); //loại bỏ giá trị đầ tiên trong q
+q.size(); //kích thước q
+q.empty(); //kiểm tra q có rỗng 
+</code></pre>
+<h2 id="deque-queue-2-%C4%91%E1%BA%A7u">deque (queue 2 đầu)</h2>
+<h3 id="khai-b%C3%A1o">khai báo</h3>
+<pre><code>deque&lt;int&gt; dq;
+...
+</code></pre>
+<h3 id="truy-v%E1%BA%A5n">truy vấn</h3>
+<pre><code>dq[i]; //gọi giá trị tại vị trí i+1(index i)
+dp.at(i) //gọi giá trị tại vị trí i+1
+dp.front(); //gọi giá trị đầu của dequeue
+dp.back(); //gọi giá trị cuối của dq
+dq.push_front(i); //chèn i vào đầu dq
+dq.push_back(i); //chèn i vào cuối dq
+dq.pop_front(); //loại bỏ phần tử đầu tiên của dq
+dq.pop_back(); //loại bỏ phần tử cuối cùng của 
+dq.size();
+dq.empty();
+</code></pre>
+<h2 id="set">set</h2>
+<p>mảng lưu trữ:</p>
+<ul>
+<li>giá trị độc nhất</li>
+<li>tự động sắp</li>
+</ul>
+<h3 id="khai-b%C3%A1o">khai báo</h3>
+<pre><code>set&lt;string&gt; st;
+set&lt;int, greater&lt;int&gt;&gt; st; //với set sắp sếp từ lớn -&gt; bé 
+</code></pre>
+<h3 id="truy-v%E1%BA%A5n">truy vấn</h3>
+<p>set không thể truy vấn bằng vị trí(index)</p>
+<pre><code>st.insert(i); //chèn phần tử i vào set
+st.erase(i); //xóa phần tử i khỏi set
+st.clear(); //xóa toàn bộ phần tử của set
+st.size();
+st.empty();
+
+duyệt set:
+for(auto &amp;i:set){
+    cout&lt;&lt;i&lt;&lt;' ';
+}
+</code></pre>
+<h2 id="map">map</h2>
+<p>Map lưu trữ các giá trị bằng &quot;khóa&quot; thay vì vị trí.
+Map sẽ tự động sắp sếp các khóa theo thứ tự tăng</p>
+<h3 id="khai-b%C3%A1o">khai báo</h3>
+<pre><code>map&lt;int,int&gt; mp;
+map&lt;int,int,greater&lt;int&gt;&gt; mp; //map sắp sếp theo chiều lớn -&gt; 
+unordered_map&lt;int,int&gt; uo_mp; //map không sắp sếp(độ phức tạp khi truy xuất ít hơn)
+</code></pre>
+<h3 id="truy-v%E1%BA%A5n">truy vấn</h3>
+<pre><code>mp[i]; //gọi giá trị của khóa 
+mp.at(i); //gọi giá trị của khóa i(không nên dùng)
+mp.insert({i,j}); //chèn khóa i có giá trị j vào map
+mp.erase(i); //xóa khóa i khỏi map
+mp.clear(); //xóa toàn bộ 
+mp.count(i); //kiểm tra khóa i có tồn tại trong map không
+mp.size();
+mp.empty();
+
+duyệt map:
+for(auto &amp;i:mp){
+    cout&lt;&lt;i.first&lt;&lt;' '&lt;&lt;i.second&lt;&lt;'\n';
+}
+</code></pre>
+<h2 id="%C4%91%E1%BB%93-th%E1%BB%8Bc%C3%A2y">Đồ thị/Cây</h2>
+<h3 id="khai-b%C3%A1o">khai báo</h3>
+<pre><code>vector&lt;vector&lt;int&gt;&gt; adj; //khởi tạo mảng 2 chiều lưu trữ các nút con của nút tại vị trí i
+vector&lt;vector&lt;pair&lt;int,int&gt;&gt;&gt; adj; //đồ thị với trọng số cạnh
+vector&lt;vector&lt;int&gt;&gt; adj;
+vector&lt;int&gt; weight; //độ thị với trọng số điểm
+</code></pre>
+<h3 id="truy-v%E1%BA%A5n">truy vấn</h3>
+<p><strong>nhập các cạnh {u,v}</strong></p>
+<pre><code>//đồ thị vô hướng
+adj[u].push_back(v);
+adj[v].push_back(u);
+//đồ thị có hướng
+adj[u].push_back(v);
+//đồ thị có trọng số đường đi w
+adj[u].push_back({v,w}) //hoặc {w,v} nếu muốn sắp sếp theo trọng số 
+//đồ thị có trọng số điểm w
+for(int i=0;i&lt;n;i++){
+    cin&gt;&gt;weight[i];
+}
+adj[u].push_back(v);
+</code></pre>
+<h1 id="thu%E1%BA%ADt-to%C3%A1ngi%E1%BA%A3i-thu%E1%BA%ADt">Thuật toán(giải thuật)</h1>
+<h2 id="h%C3%A0m-lambda">hàm lambda</h2>
+<p>đùng để thay đổi các hàm có sẵn
+ví dụ:</p>
+<pre><code>//dùng để sort vector pair theo phần tử thứ 2
+vector&lt;pair&lt;int,int&gt;&gt; a;
+sort(a.begin(),a.end())[](pair&lt;int,int&gt; &amp;fst, pair&lt;int,int&gt; &amp;sec){
+    return fst.second&lt;sec.second;
+}
+</code></pre>
+<h2 id="%C4%91%E1%BB%87-quy">đệ quy</h2>
+<p>Gọi hàm trong hàm
+<img src="recursion_meme.png" alt="đệ quy meme"></p>
+<pre><code>int recursion(int n){
+    retrurn recursion(n);
+}
+</code></pre>
+<p>ví dụ thực tế:
+FIBONACHI</p>
+<pre><code>int fibo(int n){
+    if(n==1) return 1;
+    if(n==0) return 0;
+    return fibo(n-1)+fibo(n-2);
+}
+</code></pre>
+<h2 id="tham-lam">Tham lam</h2>
+<p>cố gắng tìm cách tối ưu bằng cách duyệt qua tất cả các khả năng để tìm cách tối ưu nhất.</p>
+<pre><code>Đặt N là số hoạt động và
+{I} là hoạt động thứ I  (1 &lt;= I &lt;= N)
+
+Với mỗi {I}, xét S[I] và F[I] lần lượt là thời gian bắt đầu và kết thúc của hoạt động đó.
+Sắp xếp lại các hoạt động theo thứ tự tăng dần của thời gian kết thúc.
+- Có nghĩa là, với I &lt; J ta phải có F [I] &lt;= F [J]
+
+//  A là tập hợp các hoạt động được chọn
+A = {1}
+//  J là hoạt động cuối cùng được chọn
+J = 1
+For I = 2  to N
+// ta có thể chọn I nếu nó là hoạt động cuối cùng
+// việc chọn lựa đã hoàn thành
+If S [I] &gt;= F [J]
+    // lựa chọn hoạt động 'I'
+    A = A + {I}
+
+    // hoạt động 'I' giờ trở thành hoạt động cuối cùng được lựa chọn
+    J = I
+Endif
+Endfor
+
+Return A
+</code></pre>
+<p>Tham lam thường dễ nghĩ ra, dễ cài đặt và chạy nhanh, nhưng không phải lúc nào cũng đúng. Khi bạn sử dụng duyệt hoặc quy hoạch động, nó giống như bạn đang di chuyển trên mặt đất an toàn. Còn đối với tham lam, thì giống như bạn đang đi trên một bãi mìn.</p>
+<p>Không tồn tại một công thức chung nào cho việc áp dụng Tham lam, tuy nhiên, ta có thể nhìn ra thuật tham bằng việc phân tích các tính chất của bài toán, kinh nghiệm cũng như trực giác.</p>
+<p><strong>Một vài lưu ý nhỏ</strong></p>
+<ul>
+<li>
+<p>Nhưng bài tập mà có vẻ cực kỳ phức tạp (như TCSocks) có thể xem như là dấu hiệu để tiếp cận bằng phương pháp Tham lam.</p>
+</li>
+<li>
+<p>Nhưng bài toán mà dữ liệu đầu vào rất lớn (mà kể cả thuật toán có độ phức tạp  vẫn không kịp) thường được giải bằng tham lam hơn là quay lui hoặc quy hoạch động.</p>
+</li>
+<li>
+<p>Mặc dù nó có vẻ rùng rợn, nhưng bạn nên nhìn thuật toán tham lam dưới đôi mắt của một thám tử chứ không phải là dưới cặp kính của một nhà toán học.</p>
+</li>
+</ul>
+<h2 id="quy-ho%E1%BA%A1ch-%C4%91%E1%BB%99ngdynamic-progframing">Quy hoạch động(dynamic progframing)</h2>
+<p>về cơ bản thì là dùng kết quả của các bước trước để tính kết quả của bước hiện tại</p>
+<p>ví dụ:</p>
+<p>FIBONACI:</p>
+<pre><code>int main()
+{
+    long long n, f[100010];
+    cin &gt;&gt; n;
+    f[0] = 0;
+    f[1] = 1;
+    for (int i = 2; i &lt;= n; i++)
+        f[i] = f[i - 1] + f[i - 2];
+    cout &lt;&lt; f[n];
+    return 0;
+}
+</code></pre>
+<p>Bước cầu thang</p>
+<p>đếm cách để bước lên cầu thang thứ n khi bước lên 1-&gt; k bậc</p>
+<pre><code>int step(int n, int k){
+    vector&lt;int&gt; dp(n+1,0);
+    dp[0]=dp[1]=1;
+    for(int i=2;i&lt;=n;i++){
+        for(int j=1;j&lt;=k;j++){
+            dp[i]+=dp[i-j];
+            if(j==i) break;
+        }
+    }
+    return dp[n];
+}
+</code></pre>
+<h3 id="b%C3%A0i-to%C3%A1n-knapsack">bài toán knapsack</h3>
+<p>Đi mua hàng, có n món hàng với cân năng a1,a2,a3,...,an và giá trị v1,v2,v3,...vn. Bạn có thể mang theo m kg. Tính giá trị lớn nhất mà bạn mang theo được.</p>
+<p><strong>Unbounded Knapsack</strong></p>
+<p>Áp dụng với bài toán có thể lấy một đồ nhiều lần</p>
+<pre class="hljs"><code><div><span class="hljs-comment">// C++ program to implement</span>
+<span class="hljs-comment">// unbounded knapsack problem using space optimised</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">knapSack</span><span class="hljs-params">(<span class="hljs-keyword">int</span> capacity, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; &amp;val, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; &amp;wt)</span> </span>{
+
+    <span class="hljs-comment">// 1D matrix for tabulation.</span>
+    <span class="hljs-function"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">dp</span><span class="hljs-params">(capacity + <span class="hljs-number">1</span>, <span class="hljs-number">0</span>)</span></span>;
+
+    <span class="hljs-comment">// Calculate maximum profit for each</span>
+    <span class="hljs-comment">// item index and knapsack weight.</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = val.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; i--) {
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt;= capacity; j++) {
+
+            <span class="hljs-keyword">int</span> take = <span class="hljs-number">0</span>;
+            <span class="hljs-keyword">if</span> (j - wt[i] &gt;= <span class="hljs-number">0</span>) {
+                take = val[i] + dp[j - wt[i]];
+            }
+            <span class="hljs-keyword">int</span> noTake = dp[j];
+
+            dp[j] = <span class="hljs-built_in">max</span>(take, noTake);
+        }
+    }
+
+    <span class="hljs-keyword">return</span> dp[capacity];
+}
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+
+    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; val = {<span class="hljs-number">1</span>, <span class="hljs-number">1</span>}, wt = {<span class="hljs-number">2</span>, <span class="hljs-number">1</span>};
+    <span class="hljs-keyword">int</span> capacity = <span class="hljs-number">3</span>;
+    <span class="hljs-built_in">cout</span> &lt;&lt; knapSack(capacity, val, wt);
+}
+</div></code></pre>
+<p><strong>0/1 knapsack</strong></p>
+<p>áp dụng với bài toán chỉ có thể lấy đồ 1 lần</p>
+<pre class="hljs"><code><div><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+
+<span class="hljs-comment">// Function to find the maximum profit</span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">knapsack</span><span class="hljs-params">(<span class="hljs-keyword">int</span> W, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; &amp;val, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; &amp;wt)</span> </span>{
+
+    <span class="hljs-comment">// Initializing dp vector</span>
+    <span class="hljs-function"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">dp</span><span class="hljs-params">(W + <span class="hljs-number">1</span>, <span class="hljs-number">0</span>)</span></span>;
+
+    <span class="hljs-comment">// Taking first i elements</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= wt.<span class="hljs-built_in">size</span>(); i++) {
+        
+        <span class="hljs-comment">// Starting from back, so that we also have data of</span>
+        <span class="hljs-comment">// previous computation of i-1 items</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = W; j &gt;= wt[i - <span class="hljs-number">1</span>]; j--) {
+            dp[j] = <span class="hljs-built_in">max</span>(dp[j], dp[j - wt[i - <span class="hljs-number">1</span>]] + val[i - <span class="hljs-number">1</span>]);
+        }
+    }
+    <span class="hljs-keyword">return</span> dp[W];
+}
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; val = {<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>};
+    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; wt = {<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">1</span>};
+    <span class="hljs-keyword">int</span> W = <span class="hljs-number">4</span>;
+
+    <span class="hljs-built_in">cout</span> &lt;&lt; knapsack(W, val, wt) &lt;&lt; <span class="hljs-built_in">endl</span>;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</div></code></pre>
+<h2 id="x%E1%BB%AD-l%C3%AD-%C4%91%E1%BB%93-th%E1%BB%8Bc%C3%A2y">Xử lí đồ thị/cây:</h2>
+<h3 id="bfsduy%E1%BB%87t-theo-chi%E1%BB%81u-r%E1%BB%99ng">BFS(duyệt theo chiều rộng)</h3>
+<pre class="hljs"><code><div><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;vector&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;queue&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+
+<span class="hljs-comment">// BFS for a single connected component</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">bfsConnected</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&gt;&amp; adj, <span class="hljs-keyword">int</span> src, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">bool</span>&gt;&amp; visited, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; res)</span> </span>{
+    <span class="hljs-built_in">queue</span>&lt;<span class="hljs-keyword">int</span>&gt; q;
+    visited[src] = <span class="hljs-literal">true</span>;
+    q.push(src);
+
+    <span class="hljs-keyword">while</span> (!q.empty()) {
+        <span class="hljs-keyword">int</span> curr = q.front();
+        q.pop();
+        res.push_back(curr);
+
+        <span class="hljs-comment">// visit all the unvisited</span>
+        <span class="hljs-comment">// neighbours of current node</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> x : adj[curr]) {
+            <span class="hljs-keyword">if</span> (!visited[x]) {
+                visited[x] = <span class="hljs-literal">true</span>;
+                q.push(x);
+            }
+        }
+    }
+}
+
+<span class="hljs-comment">// BFS for all components (handles disconnected graphs)</span>
+<span class="hljs-function"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">bfs</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&gt;&amp; adj)</span> </span>{
+    <span class="hljs-keyword">int</span> V = adj.<span class="hljs-built_in">size</span>();
+    <span class="hljs-function"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">bool</span>&gt; <span class="hljs-title">visited</span><span class="hljs-params">(V, <span class="hljs-literal">false</span>)</span></span>;
+    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; res;
+
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; V; i++) {
+        <span class="hljs-keyword">if</span> (!visited[i])
+            bfsConnected(adj, i, visited, res);
+    }
+    <span class="hljs-keyword">return</span> res;
+}
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">addEdge</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&gt;&amp; adj, <span class="hljs-keyword">int</span> u, <span class="hljs-keyword">int</span> v)</span> </span>{
+    adj[u].push_back(v);
+    adj[v].push_back(u);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">int</span> V = <span class="hljs-number">6</span>;
+    <span class="hljs-function"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&gt; <span class="hljs-title">adj</span><span class="hljs-params">(V)</span></span>;
+    
+    <span class="hljs-comment">// creating adjacency list</span>
+    addEdge(adj, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>);
+    addEdge(adj, <span class="hljs-number">0</span>, <span class="hljs-number">3</span>);
+    addEdge(adj, <span class="hljs-number">2</span>, <span class="hljs-number">0</span>);
+    addEdge(adj, <span class="hljs-number">5</span>, <span class="hljs-number">4</span>);
+    
+    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; res = bfs(adj);
+
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i : res)
+        <span class="hljs-built_in">cout</span> &lt;&lt; i &lt;&lt; <span class="hljs-string">" "</span>;
+}
+</div></code></pre>
+<h3 id="dfsduy%E1%BB%87t-theo-chi%E1%BB%81u-s%C3%A2u">DFS(duyệt theo chiều sâu)</h3>
+<pre class="hljs"><code><div><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;vector&gt;</span></span>
+
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dfsRec</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&gt; &amp;adj, 
+<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">bool</span>&gt; &amp;visited, <span class="hljs-keyword">int</span> s, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; &amp;res)</span> </span>{
+    
+    visited[s] = <span class="hljs-literal">true</span>;
+
+    res.push_back(s);
+
+    <span class="hljs-comment">// Recursively visit all adjacent </span>
+    <span class="hljs-comment">// vertices that are not visited yet</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i : adj[s])
+        <span class="hljs-keyword">if</span> (visited[i] == <span class="hljs-literal">false</span>)
+            dfsRec(adj, visited, i, res);
+}
+
+<span class="hljs-function"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&gt; &amp;adj)</span> </span>{
+    <span class="hljs-function"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">bool</span>&gt; <span class="hljs-title">visited</span><span class="hljs-params">(adj.<span class="hljs-built_in">size</span>(), <span class="hljs-literal">false</span>)</span></span>;
+    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; res;
+    <span class="hljs-comment">// Loop through all vertices </span>
+    <span class="hljs-comment">// to handle disconnected graph</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; adj.<span class="hljs-built_in">size</span>(); i++) {
+        <span class="hljs-keyword">if</span> (visited[i] == <span class="hljs-literal">false</span>) {
+            dfsRec(adj, visited, i, res);
+        }
+    }
+
+    <span class="hljs-keyword">return</span> res;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">addEdge</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&gt;&amp; adj, <span class="hljs-keyword">int</span> u, <span class="hljs-keyword">int</span> v)</span> </span>{
+    adj[u].push_back(v);
+    adj[v].push_back(u);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">int</span> V = <span class="hljs-number">6</span>;
+    <span class="hljs-function"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&gt; <span class="hljs-title">adj</span><span class="hljs-params">(V)</span></span>;
+    
+    <span class="hljs-comment">// creating adjacency list</span>
+    addEdge(adj, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>);
+    addEdge(adj, <span class="hljs-number">0</span>, <span class="hljs-number">3</span>);
+    addEdge(adj, <span class="hljs-number">2</span>, <span class="hljs-number">0</span>);
+    addEdge(adj, <span class="hljs-number">5</span>, <span class="hljs-number">4</span>);
+
+    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; res = dfs(adj); 
+    
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> it : res)
+        <span class="hljs-built_in">cout</span> &lt;&lt; it &lt;&lt; <span class="hljs-string">" "</span>;
+        
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</div></code></pre>
+<h3 id="dijkstra">Dijkstra</h3>
+<pre class="hljs"><code><div><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;vector&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;queue&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;climits&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+
+<span class="hljs-function"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">dijkstra</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;pair&lt;<span class="hljs-keyword">int</span>,<span class="hljs-keyword">int</span>&gt;&gt;&gt;&amp; adj, <span class="hljs-keyword">int</span> src)</span> </span>{
+
+    <span class="hljs-keyword">int</span> V = adj.<span class="hljs-built_in">size</span>();
+
+    <span class="hljs-comment">// Min-heap (priority queue) storing pairs of (distance, node)</span>
+    priority_queue&lt;pair&lt;<span class="hljs-keyword">int</span>, <span class="hljs-keyword">int</span>&gt;, <span class="hljs-built_in">vector</span>&lt;pair&lt;<span class="hljs-keyword">int</span>, <span class="hljs-keyword">int</span>&gt;&gt;, greater&lt;pair&lt;<span class="hljs-keyword">int</span>, <span class="hljs-keyword">int</span>&gt;&gt;&gt; pq;
+
+    <span class="hljs-function"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; <span class="hljs-title">dist</span><span class="hljs-params">(V, INT_MAX)</span></span>;
+
+    <span class="hljs-comment">// Distance from source to itself is 0</span>
+    dist[src] = <span class="hljs-number">0</span>;
+    pq.emplace(<span class="hljs-number">0</span>, src);
+
+    <span class="hljs-comment">// Process the queue until all reachable vertices are finalized</span>
+    <span class="hljs-keyword">while</span> (!pq.empty()) {
+        <span class="hljs-keyword">auto</span> top = pq.top();
+        pq.pop();
+
+        <span class="hljs-keyword">int</span> d = top.first;  
+        <span class="hljs-keyword">int</span> u = top.second; 
+
+        <span class="hljs-comment">// If this distance not the latest shortest one, skip it</span>
+        <span class="hljs-keyword">if</span> (d &gt; dist[u])
+            <span class="hljs-keyword">continue</span>;
+
+        <span class="hljs-comment">// Explore all neighbors of the current vertex</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> &amp;p : adj[u]) {
+            <span class="hljs-keyword">int</span> v = p.first; 
+            <span class="hljs-keyword">int</span> w = p.second; 
+
+            <span class="hljs-comment">// If we found a shorter path to v through u, update it</span>
+            <span class="hljs-keyword">if</span> (dist[u] + w &lt; dist[v]) {
+                dist[v] = dist[u] + w;   
+                pq.emplace(dist[v], v);
+            }
+        }
+    }
+
+    <span class="hljs-comment">// Return the final shortest distances from the source</span>
+    <span class="hljs-keyword">return</span> dist;
+}
+
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">int</span> src = <span class="hljs-number">0</span>;
+
+    <span class="hljs-function"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;pair&lt;<span class="hljs-keyword">int</span>,<span class="hljs-keyword">int</span>&gt;&gt;&gt; <span class="hljs-title">adj</span><span class="hljs-params">(<span class="hljs-number">5</span>)</span></span>;
+    adj[<span class="hljs-number">0</span>] = {{<span class="hljs-number">1</span>,<span class="hljs-number">4</span>}, {<span class="hljs-number">2</span>,<span class="hljs-number">8</span>}};
+    adj[<span class="hljs-number">1</span>] = {{<span class="hljs-number">0</span>,<span class="hljs-number">4</span>}, {<span class="hljs-number">4</span>,<span class="hljs-number">6</span>}, {<span class="hljs-number">2</span>,<span class="hljs-number">3</span>}};
+    adj[<span class="hljs-number">2</span>] = {{<span class="hljs-number">0</span>,<span class="hljs-number">8</span>}, {<span class="hljs-number">3</span>,<span class="hljs-number">2</span>}, {<span class="hljs-number">1</span>,<span class="hljs-number">3</span>}};
+    adj[<span class="hljs-number">3</span>] = {{<span class="hljs-number">2</span>,<span class="hljs-number">2</span>}, {<span class="hljs-number">4</span>,<span class="hljs-number">10</span>}};
+    adj[<span class="hljs-number">4</span>] = {{<span class="hljs-number">1</span>,<span class="hljs-number">6</span>}, {<span class="hljs-number">3</span>,<span class="hljs-number">10</span>}};
+
+    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; result = dijkstra(adj, src);
+
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> d : result)
+        <span class="hljs-built_in">cout</span> &lt;&lt; d &lt;&lt; <span class="hljs-string">" "</span>;
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"
+"</span>;
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</div></code></pre>
+
+</body>
+</html>

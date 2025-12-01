@@ -211,7 +211,7 @@ Map sẽ tự động sắp sếp các khóa theo thứ tự tăng
 ### truy vấn
 __nhập các cạnh {u,v}__
 
-    //đồ thị vô hương
+    //đồ thị vô hướng
     adj[u].push_back(v);
     adj[v].push_back(u);
     //đồ thị có hướng
@@ -328,7 +328,281 @@ Bước cầu thang
                 if(j==i) break;
             }
         }
-        n dp[n];
+        return dp[n];
     }
 
+### bài toán knapsack
+Đi mua hàng, có n món hàng với cân năng a1,a2,a3,...,an và giá trị v1,v2,v3,...vn. Bạn có thể mang theo m kg. Tính giá trị lớn nhất mà bạn mang theo được. 
+
+__Unbounded Knapsack__
+
+Áp dụng với bài toán có thể lấy một đồ nhiều lần
+
+```C++
+// C++ program to implement
+// unbounded knapsack problem using space optimised
+#include <bits/stdc++.h>
+using namespace std;
+
+int knapSack(int capacity, vector<int> &val, vector<int> &wt) {
+
+    // 1D matrix for tabulation.
+    vector<int> dp(capacity + 1, 0);
+
+    // Calculate maximum profit for each
+    // item index and knapsack weight.
+    for (int i = val.size() - 1; i >= 0; i--) {
+        for (int j = 1; j <= capacity; j++) {
+
+            int take = 0;
+            if (j - wt[i] >= 0) {
+                take = val[i] + dp[j - wt[i]];
+            }
+            int noTake = dp[j];
+
+            dp[j] = max(take, noTake);
+        }
+    }
+
+    return dp[capacity];
+}
+
+int main() {
+
+    vector<int> val = {1, 1}, wt = {2, 1};
+    int capacity = 3;
+    cout << knapSack(capacity, val, wt);
+}
+```
+__0/1 knapsack__
+
+áp dụng với bài toán chỉ có thể lấy đồ 1 lần
+
+
+```C++
+#include <bits/stdc++.h>
+using namespace std;
+
+// Function to find the maximum profit
+int knapsack(int W, vector<int> &val, vector<int> &wt) {
+
+    // Initializing dp vector
+    vector<int> dp(W + 1, 0);
+
+    // Taking first i elements
+    for (int i = 1; i <= wt.size(); i++) {
+        
+        // Starting from back, so that we also have data of
+        // previous computation of i-1 items
+        for (int j = W; j >= wt[i - 1]; j--) {
+            dp[j] = max(dp[j], dp[j - wt[i - 1]] + val[i - 1]);
+        }
+    }
+    return dp[W];
+}
+
+int main() {
+    vector<int> val = {1, 2, 3};
+    vector<int> wt = {4, 5, 1};
+    int W = 4;
+
+    cout << knapsack(W, val, wt) << endl;
+    return 0;
+}
+```
+
+## Xử lí đồ thị/cây:
+
+### BFS(duyệt theo chiều rộng)
+```C++
+#include <iostream>
+#include <vector>
+#include <queue>
+using namespace std;
+
+// BFS for a single connected component
+void bfsConnected(vector<vector<int>>& adj, int src, vector<bool>& visited, vector<int>& res) {
+    queue<int> q;
+    visited[src] = true;
+    q.push(src);
+
+    while (!q.empty()) {
+        int curr = q.front();
+        q.pop();
+        res.push_back(curr);
+
+        // visit all the unvisited
+        // neighbours of current node
+        for (int x : adj[curr]) {
+            if (!visited[x]) {
+                visited[x] = true;
+                q.push(x);
+            }
+        }
+    }
+}
+
+// BFS for all components (handles disconnected graphs)
+vector<int> bfs(vector<vector<int>>& adj) {
+    int V = adj.size();
+    vector<bool> visited(V, false);
+    vector<int> res;
+
+    for (int i = 0; i < V; i++) {
+        if (!visited[i])
+            bfsConnected(adj, i, visited, res);
+    }
+    return res;
+}
+void addEdge(vector<vector<int>>& adj, int u, int v) {
+    adj[u].push_back(v);
+    adj[v].push_back(u);
+}
+
+int main() {
+    int V = 6;
+    vector<vector<int>> adj(V);
+    
+    // creating adjacency list
+    addEdge(adj, 1, 2);
+    addEdge(adj, 0, 3);
+    addEdge(adj, 2, 0);
+    addEdge(adj, 5, 4);
+    
+    vector<int> res = bfs(adj);
+
+    for (int i : res)
+        cout << i << " ";
+}
+```
+
+### DFS(duyệt theo chiều sâu)
+```C++
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+void dfsRec(vector<vector<int>> &adj, 
+vector<bool> &visited, int s, vector<int> &res) {
+    
+    visited[s] = true;
+
+    res.push_back(s);
+
+    // Recursively visit all adjacent 
+    // vertices that are not visited yet
+    for (int i : adj[s])
+        if (visited[i] == false)
+            dfsRec(adj, visited, i, res);
+}
+
+vector<int> dfs(vector<vector<int>> &adj) {
+    vector<bool> visited(adj.size(), false);
+    vector<int> res;
+    // Loop through all vertices 
+    // to handle disconnected graph
+    for (int i = 0; i < adj.size(); i++) {
+        if (visited[i] == false) {
+            dfsRec(adj, visited, i, res);
+        }
+    }
+
+    return res;
+}
+
+void addEdge(vector<vector<int>>& adj, int u, int v) {
+    adj[u].push_back(v);
+    adj[v].push_back(u);
+}
+
+int main() {
+    int V = 6;
+    vector<vector<int>> adj(V);
+    
+    // creating adjacency list
+    addEdge(adj, 1, 2);
+    addEdge(adj, 0, 3);
+    addEdge(adj, 2, 0);
+    addEdge(adj, 5, 4);
+
+    vector<int> res = dfs(adj); 
+    
+    for (auto it : res)
+        cout << it << " ";
+        
+    return 0;
+}
+```
+### Dijkstra 
+```C++
+#include <iostream>
+#include <vector>
+#include <queue>
+#include <climits>
+using namespace std;
+
+vector<int> dijkstra(vector<vector<pair<int,int>>>& adj, int src) {
+
+    int V = adj.size();
+
+    // Min-heap (priority queue) storing pairs of (distance, node)
+    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
+
+    vector<int> dist(V, INT_MAX);
+
+    // Distance from source to itself is 0
+    dist[src] = 0;
+    pq.emplace(0, src);
+
+    // Process the queue until all reachable vertices are finalized
+    while (!pq.empty()) {
+        auto top = pq.top();
+        pq.pop();
+
+        int d = top.first;  
+        int u = top.second; 
+
+        // If this distance not the latest shortest one, skip it
+        if (d > dist[u])
+            continue;
+
+        // Explore all neighbors of the current vertex
+        for (auto &p : adj[u]) {
+            int v = p.first; 
+            int w = p.second; 
+
+            // If we found a shorter path to v through u, update it
+            if (dist[u] + w < dist[v]) {
+                dist[v] = dist[u] + w;   
+                pq.emplace(dist[v], v);
+            }
+        }
+    }
+
+    // Return the final shortest distances from the source
+    return dist;
+}
+
+
+int main() {
+    int src = 0;
+
+    vector<vector<pair<int,int>>> adj(5);
+    adj[0] = {{1,4}, {2,8}};
+    adj[1] = {{0,4}, {4,6}, {2,3}};
+    adj[2] = {{0,8}, {3,2}, {1,3}};
+    adj[3] = {{2,2}, {4,10}};
+    adj[4] = {{1,6}, {3,10}};
+
+    vector<int> result = dijkstra(adj, src);
+
+    for (int d : result)
+        cout << d << " ";
+    cout << "
+";
+
+    return 0;
+}
+```
 
